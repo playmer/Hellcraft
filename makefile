@@ -2,20 +2,25 @@
 # Declaration of variables
 CC = g++
 CC_FLAGS = -std=c++17 -Wall -g
+LINKER_FLAGS =  -lsfml-graphics -lsfml-window -lsfml-system -mwindows
+INCLUDE_FILES = C:\Users\Rietty\Documents\Libraries\SFML-Install\include
+LIB_FILES = C:\Users\Rietty\Documents\Libraries\SFML-Install\lib
  
 # File names
-EXEC = build # Called build because it is our current project build 
+EXEC = Release/build # Called build because it is our current project build 
 SOURCES = $(wildcard *.cpp)
 OBJECTS = $(SOURCES:.cpp=.o)
  
+all: $(EXEC)
+
 # Main target
 $(EXEC): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(EXEC)
+	$(CC) -L $(LIB_FILES) $(OBJECTS) -o $(EXEC) $(LINKER_FLAGS)
  
 # To obtain object files
 %.o: %.cpp
-	$(CC) -c $(CC_FLAGS) $< -o $@
+	$(CC) -c $(CC_FLAGS) $< -o $@ -I $(INCLUDE_FILES)
  
 # To remove generated files
 clean:
-	del /F $(EXEC) $(OBJECTS)
+	del /F $(OBJECTS)

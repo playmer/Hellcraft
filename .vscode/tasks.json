@@ -24,7 +24,7 @@
                 "panel": "shared"
             },
             // arg passing example: in this case is executed make QUIET=0
-            "args": [],
+            "args": ["all", "clean"],
             // Use the standard less compilation problem matcher.
             "problemMatcher": {
                 "owner": "cpp",
