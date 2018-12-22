@@ -1,5 +1,9 @@
+/*
+    NEET: Never Ever Enter There
+    A game by Juliette Lavoie.
+*/
+
 #include <iostream>
-#include <SFML/Graphics.hpp>
 
 int main(int argc, char* argv[]) {
     // Window size.
