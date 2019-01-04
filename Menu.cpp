@@ -1,7 +1,7 @@
 // Project Headers.
 #include "Menu.hpp"
 
-namespace NEET {
+namespace Game {
     void Menu::init() {
 
     }

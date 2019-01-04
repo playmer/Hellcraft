@@ -7,7 +7,7 @@ Implements a Menu which is based off the State abstract class.
 // Project Headers.
 #include "GS.hpp"
 
-namespace NEET {
+namespace Game {
     class Menu : Engine::GS {
         public:
             void init() override;
