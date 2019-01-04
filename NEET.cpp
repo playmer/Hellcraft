@@ -8,6 +8,7 @@
 #include <SFML/Graphics/Image.hpp>
 // Project Headers.
 #include "GSM.hpp"
+#include "Menu.hpp"
 
 // Game Entry point.
 int main(int argc, char* argv[]) {
@@ -22,7 +23,7 @@ int main(int argc, char* argv[]) {
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     // Create a new GSM and launch it.
-    Engine::GSM game;
+    Engine::GSM<Menu> game;
     // Start game loop.
     while(window.isOpen()) {
         // Used to capture events.
@@ -31,11 +32,8 @@ int main(int argc, char* argv[]) {
             if(event.type == sf::Event::Closed) {
                 window.close();
             }
-            // game.handleEvents();
         }
-        // game.update();
         window.clear();
-        // game.draw();
         window.display();
     }
     return EXIT_SUCCESS;
