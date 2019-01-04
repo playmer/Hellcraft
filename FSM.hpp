@@ -29,12 +29,23 @@ namespace Engine {
         
         FSM();
         ~FSM();
+
+        template <class defaultState>
+        FSM(defaultState&& f_ds) {
+            init();
+            m_states.push(std::move(f_ds));
+            std::visit(
+                [](auto &state){ state.init(); },
+                m_states.top()
+            );
+        }
+
     private:
         std::stack<std::variant<T...>> m_states; 
         bool m_running;
     };
 
-    // Constructor.
+    // Default constructor.
     template <typename ...T>
     FSM<T...>::FSM() {
         init();
