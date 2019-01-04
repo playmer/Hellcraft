@@ -2,7 +2,6 @@
 #include "Menu.hpp"
 
 namespace NEET {
-    
     void Menu::init() {
 
     }

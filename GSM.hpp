@@ -26,7 +26,7 @@ namespace Engine {
         void handleEvents();
         void update();
         void draw();
-
+        
     private:
         std::stack<std::variant<T...>> m_states; 
         bool m_running;
@@ -65,7 +65,7 @@ namespace Engine {
             m_states.pop();
         }
         // Store and start up new state.
-        m_states.push(p_state);
+        m_states.push(std::move(p_state));
         std::visit(
             [](auto& state){ state.init(); },
             m_states.top()
@@ -83,7 +83,7 @@ namespace Engine {
             );
         }
         // Switch to new one and start it up.
-        m_states.push(p_state);
+        m_states.push(std::move(p_state));
         std::visit(
             [](auto& state){ state.init(); },
             m_states.top()
