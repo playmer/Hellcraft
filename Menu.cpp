@@ -1,30 +1,33 @@
 // Project Headers.
 #include "Menu.hpp"
 
-void Menu::init() {
+namespace NEET {
+    
+    void Menu::init() {
 
-}
+    }
 
-void Menu::cleanup() {
+    void Menu::cleanup() {
 
-}
+    }
 
-void Menu::pause() {
+    void Menu::pause() {
 
-}
+    }
 
-void Menu::resume() {
+    void Menu::resume() {
 
-}
+    }
 
-void Menu::handleEvents() {
+    void Menu::handleEvents() {
 
-}
+    }
 
-void Menu::update() {
+    void Menu::update() {
 
-}
+    }
 
-void Menu::draw() {
+    void Menu::draw() {
 
+    }
 }

@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     // Create a new GSM and launch it.
-    Engine::GSM<Menu> game;
+    Engine::GSM<NEET::Menu> game;
     // Start game loop.
     while(window.isOpen()) {
         // Used to capture events.
