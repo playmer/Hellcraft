@@ -27,10 +27,24 @@ namespace Engine {
         void update();
         void draw();
         
+        GSM();
+        ~GSM();
     private:
         std::stack<std::variant<T...>> m_states; 
         bool m_running;
     };
+
+    // Constructor.
+    template <typename ...T>
+    GSM<T...>::GSM() {
+        init();
+    }
+
+    // Destructor.
+    template <typename ...T>
+    GSM<T...>::~GSM() {
+        cleanup();
+    }
 
     // Initalize the state manager. 
     template <typename ...T>
