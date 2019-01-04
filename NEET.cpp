@@ -32,9 +32,11 @@ int main(int argc, char* argv[]) {
             if(event.type == sf::Event::Closed) {
                 window.close();
             }
-            game.handleEvents();
+            // game.handleEvents();
+            // game.update();
         }
         window.clear();
+        // game.draw();
         window.display();
     }
     return EXIT_SUCCESS;
