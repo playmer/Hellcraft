@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Image.hpp>
 // Project Headers.
-#include "GSM.hpp"
+#include "FSM.hpp"
 #include "Menu.hpp"
 
 // Game Entry point.
@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     // Create a new GSM and launch it.
-    Engine::GSM<NEET::Menu> game;
+    Engine::FSM<NEET::Menu> game;
     game.changeState(NEET::Menu());
     // Start game loop.
     while(window.isOpen()) {

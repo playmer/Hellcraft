@@ -12,7 +12,7 @@ Part of the game engine.
 
 namespace Engine {
     template <typename ...T>
-    class GSM {
+    class FSM {
     public:
         using State = std::variant<T...>;
        
@@ -27,8 +27,8 @@ namespace Engine {
         void update();
         void draw();
         
-        GSM();
-        ~GSM();
+        FSM();
+        ~FSM();
     private:
         std::stack<std::variant<T...>> m_states; 
         bool m_running;
@@ -36,26 +36,26 @@ namespace Engine {
 
     // Constructor.
     template <typename ...T>
-    GSM<T...>::GSM() {
+    FSM<T...>::FSM() {
         init();
     }
 
     // Destructor.
     template <typename ...T>
-    GSM<T...>::~GSM() {
+    FSM<T...>::~FSM() {
         cleanup();
     }
 
     // Initalize the state manager. 
     template <typename ...T>
-    void GSM<T...>::init() {
+    void FSM<T...>::init() {
         m_running = true;
     }
 
     // Cleanup all states currently on the stack.
     // Mark machine as not running anymore.
     template <typename ...T>
-    void GSM<T...>::cleanup() {
+    void FSM<T...>::cleanup() {
         // While there is still a state left, clean up resources and pop it.
         while(!m_states.empty()) {
             std::visit(
@@ -69,7 +69,7 @@ namespace Engine {
 
     // Transition to a new state without preserving old one.
     template <typename ...T>
-    void GSM<T...>::changeState(State p_state) {
+    void FSM<T...>::changeState(State p_state) {
         // Cleanup current state.
         if(!m_states.empty()) {
             std::visit(
@@ -88,7 +88,7 @@ namespace Engine {
 
     // Pause current state and switch to a new one.
     template <typename ...T>
-    void GSM<T...>::pushState(State p_state) {
+    void FSM<T...>::pushState(State p_state) {
         // Pause current state.
         if(!m_states.empty()) {
             std::visit(
@@ -106,7 +106,7 @@ namespace Engine {
 
     // Cleanup current state and go back to previous state, resuming it.
     template <typename ...T>
-    void GSM<T...>::popState() {
+    void FSM<T...>::popState() {
         // Cleanup current state.
         if(!m_states.empty()) {
             std::visit(
@@ -126,7 +126,7 @@ namespace Engine {
 
     // Let the state handle events.
     template <typename ...T>
-    void GSM<T...>::handleEvents() {
+    void FSM<T...>::handleEvents() {
         std::visit(
             [](auto& state){ state.handleEvents(); },
             m_states.top()
@@ -135,7 +135,7 @@ namespace Engine {
 
     // Let the state update info, actors, etc.
     template <typename ...T>
-    void GSM<T...>::update() {
+    void FSM<T...>::update() {
         std::visit(
             [](auto& state){ state.update(); },
             m_states.top()
@@ -144,7 +144,7 @@ namespace Engine {
 
     // Let the state draw.
     template <typename ...T>
-    void GSM<T...>::draw() {
+    void FSM<T...>::draw() {
         std::visit(
             [](auto& state){ state.draw(); },
             m_states.top()
