@@ -19,8 +19,8 @@ namespace Engine {
         void init();
         void cleanup();
 
-        void changeState(State state);
-        void pushState(State state);
+        void changeState(State p_state);
+        void pushState(State p_state);
         void popState();
 
         void handleEvents();
@@ -55,7 +55,7 @@ namespace Engine {
 
     // Transition to a new state without preserving old one.
     template <typename ...T>
-    void GSM<T...>::changeState(State state) {
+    void GSM<T...>::changeState(State p_state) {
         // Cleanup current state.
         if(!m_states.empty()) {
             std::visit(
@@ -65,7 +65,7 @@ namespace Engine {
             m_states.pop();
         }
         // Store and start up new state.
-        m_states.push(state);
+        m_states.push(p_state);
         std::visit(
             [](auto& state){ state.init(); },
             m_states.top()
@@ -74,7 +74,7 @@ namespace Engine {
 
     // Pause current state and switch to a new one.
     template <typename ...T>
-    void GSM<T...>::pushState(State state) {
+    void GSM<T...>::pushState(State p_state) {
         // Pause current state.
         if(!m_states.empty()) {
             std::visit(
@@ -83,7 +83,7 @@ namespace Engine {
             );
         }
         // Switch to new one and start it up.
-        m_states.push(state);
+        m_states.push(p_state);
         std::visit(
             [](auto& state){ state.init(); },
             m_states.top()
