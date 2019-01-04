@@ -12,8 +12,6 @@ depending on each other if not needed.
 // Project Headers.
 #include "FSM.hpp"
 #include "Menu.hpp"
-// Standard Headers.
-#include <memory>
 
 namespace Game {
     class Application {
@@ -24,10 +22,10 @@ namespace Game {
             void applicationLoop();
 
         private:
-            // Game state machine.
-            std::unique_ptr<Engine::FSM<Game::Menu>> m_game;
             // Window related items.
-            std::unique_ptr<sf::RenderWindow> m_window;
+            sf::RenderWindow m_window;
+            // Game state machine.
+            Engine::FSM<Game::Menu> m_game;
             sf::Image m_icon;
     };
 }
