@@ -3,6 +3,18 @@
 /*
 State machine to manage game states and transitions.
 Part of the game engine.
+
+States need the following functions implemented:
+
+void init();
+void cleanup();
+
+void pause();
+void resume();
+
+template <typename FSM> void handleEvents(FSM* p_fsm);
+template <typename FSM> void update(FSM* p_fsm);
+template <typename FSM> void draw(FSM* p_fsm);
 */
 
 // Standard Headers.
@@ -139,7 +151,7 @@ namespace Engine {
     template <typename ...T>
     void FSM<T...>::handleEvents() {
         std::visit(
-            [](auto& state){ state.handleEvents(); },
+            [this](auto& state){ state.handleEvents(this); },
             m_states.top()
         );
     }
@@ -148,7 +160,7 @@ namespace Engine {
     template <typename ...T>
     void FSM<T...>::update() {
         std::visit(
-            [](auto& state){ state.update(); },
+            [this](auto& state){ state.update(this); },
             m_states.top()
         );
     }
@@ -157,7 +169,7 @@ namespace Engine {
     template <typename ...T>
     void FSM<T...>::draw() {
         std::visit(
-            [](auto& state){ state.draw(); },
+            [this](auto& state){ state.draw(this); },
             m_states.top()
         );
     }

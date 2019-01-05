@@ -18,15 +18,18 @@ namespace Game {
 
     }
 
-    void Menu::handleEvents() {
+    template <typename FSM> 
+    void Menu::handleEvents(FSM* p_fsm) {
 
     }
 
-    void Menu::update() {
+    template <typename FSM> 
+    void Menu::update(FSM* p_fsm) {
 
     }
 
-    void Menu::draw() {
+    template <typename FSM> 
+    void Menu::draw(FSM* p_fsm) {
 
     }
 }

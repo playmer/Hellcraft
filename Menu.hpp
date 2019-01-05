@@ -5,19 +5,25 @@ Implements a Menu which is based off the State abstract class.
 */
 
 // Project Headers.
-#include "GS.hpp"
+#include "FSM.hpp"
 
 namespace Game {
-    class Menu : Engine::GS {
+    template <typename ...T>
+    class FSM;
+
+    class Menu {
         public:
-            void init() override;
-            void cleanup() override;
+            void init();
+            void cleanup();
 
-            void pause() override;
-            void resume() override;
+            void pause();
+            void resume();
 
-            void handleEvents() override;
-            void update() override;
-            void draw() override;
+            template <typename FSM> 
+            void handleEvents(FSM* p_fsm);
+            template <typename FSM> 
+            void update(FSM* p_fsm);
+            template <typename FSM> 
+            void draw(FSM* p_fsm);
     };
 }
