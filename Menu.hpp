@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MENU_HPP
+#define MENU_HPP
 
 /*
 Implements a Menu which is based off the State abstract class.
@@ -44,7 +45,7 @@ namespace Game {
     }
 
     template <typename FSM> 
-    void Menu::handleEvents(FSM* p_fsm) {
+    void Menu::handleEvents (FSM* p_fsm) {
 
     }
 
@@ -58,3 +59,5 @@ namespace Game {
 
     }
 }
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FSM_HPP
+#define FSM_HPP
 
 /*
 State machine to manage game states and transitions.
@@ -174,3 +175,5 @@ namespace Engine {
         );
     }
 }
+
+#endif
