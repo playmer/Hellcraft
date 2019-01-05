@@ -6,15 +6,18 @@ Part of the game engine.
 
 States need the following functions implemented:
 
-void init();
-void cleanup();
+inline void init();
+inline void cleanup();
 
-void pause();
-void resume();
+inline void pause();
+inline void resume();
 
-template <typename FSM> void handleEvents(FSM* p_fsm);
-template <typename FSM> void update(FSM* p_fsm);
-template <typename FSM> void draw(FSM* p_fsm);
+template <typename FSM> 
+void handleEvents(FSM* p_fsm);
+template <typename FSM> 
+void update(FSM* p_fsm);
+template <typename FSM> 
+void draw(FSM* p_fsm);
 */
 
 // Standard Headers.
