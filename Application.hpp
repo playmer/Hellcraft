@@ -1,5 +1,4 @@
-#ifndef APPLICATION_HPP
-#define APPLICATION_HPP
+#pragma once
 
 /*
 Wrapper to allow us to easily load/create the different parts of our game,
@@ -30,5 +29,3 @@ namespace Game {
             sf::Image m_icon;
     };
 }
-
-#endif
