@@ -12,19 +12,19 @@ namespace Game {
     class FSM;
 
     class Menu {
-        public:
-            inline void init();
-            inline void cleanup();
+    public:
+        inline void init();
+        inline void cleanup();
 
-            inline void pause();
-            inline void resume();
+        inline void pause();
+        inline void resume();
 
-            template <typename FSM> 
-            void handleEvents(FSM* p_fsm);
-            template <typename FSM> 
-            void update(FSM* p_fsm);
-            template <typename FSM> 
-            void draw(FSM* p_fsm);
+        template <typename FSM> 
+        void handleEvents(FSM* p_fsm);
+        template <typename FSM> 
+        void update(FSM* p_fsm);
+        template <typename FSM> 
+        void draw(FSM* p_fsm);
     };
 
     void Menu::init() {
@@ -44,7 +44,7 @@ namespace Game {
     }
 
     template <typename FSM> 
-    void Menu::handleEvents (FSM* p_fsm) {
+    void Menu::handleEvents(FSM* p_fsm) {
 
     }
 

@@ -15,17 +15,17 @@ depending on each other if not needed.
 
 namespace Game {
     class Application {
-        public:
-            Application(int p_windowWidth, int p_windowHeight, std::string p_applicationTitle, std::string p_applicationIcon);
-            ~Application();
+    public:
+        Application(int p_windowWidth, int p_windowHeight, std::string p_applicationTitle, std::string p_applicationIcon);
+        ~Application();
 
-            void applicationLoop();
+        void applicationLoop();
 
-        private:
-            // Window related items.
-            sf::RenderWindow m_window;
-            // Game state machine.
-            Engine::FSM<Game::Menu> m_game;
-            sf::Image m_icon;
+    private:
+        // Window related items.
+        sf::RenderWindow m_window;
+        // Game state machine.
+        Engine::FSM<Game::Menu> m_game;
+        sf::Image m_icon;
     };
 }
