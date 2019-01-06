@@ -26,7 +26,7 @@ namespace Engine {
 
     }
 
-   Engine::Render onEvent() {
+   Engine::Render Update::onEvent() {
         return Engine::Render {};
     }
 }
