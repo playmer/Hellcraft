@@ -34,6 +34,5 @@ namespace Game {
             m_game.draw();
             m_window.display();
         }
-        //
     }
-}
+}   

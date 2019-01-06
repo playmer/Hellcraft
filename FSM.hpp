@@ -18,6 +18,8 @@ template <typename FSM>
 void update(FSM* p_fsm);
 template <typename FSM> 
 void draw(FSM* p_fsm);
+
+As well as a constructor and destructor.
 */
 
 // Standard Headers.
@@ -177,3 +179,4 @@ namespace Engine {
         );
     }
 }
+
