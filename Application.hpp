@@ -14,6 +14,9 @@ depending on each other if not needed.
 #include "IO.hpp"
 #include "Update.hpp"
 #include "Render.hpp"
+#include "Implementation.hpp"
+// Standard Headers.
+#include <variant>
 
 namespace Game {
     class Application {
@@ -26,8 +29,10 @@ namespace Game {
     private:
         // Window related items.
         sf::RenderWindow m_window;
-        // Game state machine.
-        Engine::FSM<Engine::IO, Engine::Update, Engine::Render> m_game;
+        // Finite state machine for IO, Update and Render.
+        Engine::FSM<Engine::IO, Engine::Update, Engine::Render> m_fsm;
+        // Game states variant.
+        std::variant<Game::Menu> m_game;
         sf::Image m_icon;
     };
 }
