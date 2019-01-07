@@ -5,8 +5,7 @@ namespace Game {
     // Constructor.
     Application::Application(int p_windowWidth, int p_windowHeight, std::string p_applicationTitle, std::string p_applicationIcon) 
     : m_window { sf::VideoMode(p_windowWidth, p_windowHeight), p_applicationTitle },
-      m_fsm { Engine::IO {} },
-      m_game { Game::Menu {} }
+      m_game { Engine::IO {} }
     {
         // Create the SFML icon and set it.
         m_icon.loadFromFile(p_applicationIcon);
@@ -30,8 +29,7 @@ namespace Game {
                 }
             }
             m_window.clear();
-            m_fsm.onEvent();
-            std::visit(this->m_game, this->m_fsm.getCurrentState());
+            m_game.onEvent();
             m_window.display();
         }
     }

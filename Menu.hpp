@@ -12,7 +12,12 @@ namespace Game {
     public:
         void init();
         void cleanup();
-        
+
+        void pause();
+        void resume();
+
+        std::variant onEvent();
+
         Menu();
         ~Menu();
     };
@@ -30,6 +35,18 @@ namespace Game {
     }
 
     void Menu::cleanup() {
+
+    }
+
+    void Menu::pause() {
+
+    }
+
+    void Menu::resume() {
+
+    }
+
+    std::variant Menu::onEvent() {
 
     }
 }
