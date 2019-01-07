@@ -25,18 +25,7 @@ namespace Game {
         void update(FSM* p_fsm);
         template <typename FSM> 
         void draw(FSM* p_fsm);
-
-        Menu();
-        ~Menu();
     };
-
-    Menu::Menu() {
-        init();
-    }
-
-    Menu::~Menu() {
-        cleanup();
-    }
 
     void Menu::init() {
 
