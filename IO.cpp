@@ -26,7 +26,7 @@ namespace Engine {
 
     }
 
-    Engine::Update IO::onEvent() {
+    Engine::Update onEvent() {
         return Engine::Update {};
     }
 }
