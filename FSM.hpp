@@ -3,6 +3,23 @@
 /*
 State machine to manage game states and transitions.
 Part of the game engine.
+
+States need the following functions implemented:
+
+inline void init();
+inline void cleanup();
+
+inline void pause();
+inline void resume();
+
+template <typename FSM> 
+void handleEvents(FSM* p_fsm);
+template <typename FSM> 
+void update(FSM* p_fsm);
+template <typename FSM> 
+void draw(FSM* p_fsm);
+
+As well as a constructor and destructor.
 */
 
 // Standard Headers.
@@ -23,9 +40,9 @@ namespace Engine {
         void pushState(State p_state);
         void popState();
 
-        std::variant<T...> getCurrentState();
-
-        void onEvent();
+        void handleEvents();
+        void update();
+        void draw();
         
         FSM();
         ~FSM();
@@ -135,22 +152,31 @@ namespace Engine {
         }
     }
 
-    // Return the current state.
-    template <typename ...T>
-    std::variant<T...> FSM<T...>::getCurrentState() {
-        return m_states.top();
-    }
-
     // Let the state handle events.
     template <typename ...T>
-    void FSM<T...>::onEvent() {
+    void FSM<T...>::handleEvents() {
         std::visit(
-            [this](auto& state){ 
-                auto f_newState = state.onEvent();
-                this->popState();
-                this->pushState(f_newState);
-            },
+            [this](auto& state){ state.handleEvents(this); },
+            m_states.top()
+        );
+    }
+
+    // Let the state update info, actors, etc.
+    template <typename ...T>
+    void FSM<T...>::update() {
+        std::visit(
+            [this](auto& state){ state.update(this); },
+            m_states.top()
+        );
+    }
+
+    // Let the state draw.
+    template <typename ...T>
+    void FSM<T...>::draw() {
+        std::visit(
+            [this](auto& state){ state.draw(this); },
             m_states.top()
         );
     }
 }
+

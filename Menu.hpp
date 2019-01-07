@@ -4,19 +4,27 @@
 Implements a Menu which is based off the State abstract class.
 */
 
-// Standard Headers.
-#include <variant>
+// Project Headers.
+#include "FSM.hpp"
 
 namespace Game {
+    template <typename ...T>
+    class FSM;
+
     class Menu {
     public:
-        void init();
-        void cleanup();
+        inline void init();
+        inline void cleanup();
 
-        void pause();
-        void resume();
+        inline void pause();
+        inline void resume();
 
-        std::variant onEvent();
+        template <typename FSM> 
+        void handleEvents(FSM* p_fsm);
+        template <typename FSM> 
+        void update(FSM* p_fsm);
+        template <typename FSM> 
+        void draw(FSM* p_fsm);
 
         Menu();
         ~Menu();
@@ -46,7 +54,18 @@ namespace Game {
 
     }
 
-    std::variant Menu::onEvent() {
+    template <typename FSM> 
+    void Menu::handleEvents(FSM* p_fsm) {
+
+    }
+
+    template <typename FSM> 
+    void Menu::update(FSM* p_fsm) {
+
+    }
+
+    template <typename FSM> 
+    void Menu::draw(FSM* p_fsm) {
 
     }
 }

@@ -11,9 +11,7 @@ depending on each other if not needed.
 #include <SFML/Graphics/Image.hpp>
 // Project Headers.
 #include "FSM.hpp"
-#include "IO.hpp"
-#include "Update.hpp"
-#include "Render.hpp"
+#include "Menu.hpp"
 
 namespace Game {
     class Application {
@@ -27,7 +25,7 @@ namespace Game {
         // Window related items.
         sf::RenderWindow m_window;
         // Game state machine.
-        Engine::FSM<Engine::IO, Engine::Update, Engine::Render> m_game;
+        Engine::FSM<Game::Menu> m_game;
         sf::Image m_icon;
     };
 }
