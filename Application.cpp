@@ -6,7 +6,7 @@ namespace Game {
     Application::Application(int p_windowWidth, int p_windowHeight, std::string p_applicationTitle, std::string p_applicationIcon) 
     : m_window { p_windowWidth, p_windowHeight, p_applicationTitle, p_applicationIcon }
     {
-
+        
     }
 
     // Destructor.
