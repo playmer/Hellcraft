@@ -5,6 +5,8 @@ State machine to manage game states and transitions.
 Part of the game engine.
 */
 
+// Project Headers.
+#include "Log.hpp"
 // Standard Headers.
 #include <stack>
 #include <variant>
@@ -32,12 +34,13 @@ namespace Engine {
 
         template <class defaultState>
         FSM(defaultState&& f_ds) {
+            Logger::log(INFO, "Move constructor called.");
             init();
             m_states.push(std::move(f_ds));
             std::visit(
                 [](auto &state){ state.init(); },
                 m_states.top()
-            );
+            ); 
         }
 
     private:
@@ -48,6 +51,7 @@ namespace Engine {
     // Default constructor.
     template <typename ...T>
     FSM<T...>::FSM() {
+        Logger::log(ERROR, "Default constructor called.");
         init();
     }
 
@@ -61,6 +65,7 @@ namespace Engine {
     template <typename ...T>
     void FSM<T...>::init() {
         m_running = true;
+        Logger::log(INFO, "FSM is now running.");
     }
 
     // Cleanup all states currently on the stack.
@@ -139,7 +144,7 @@ namespace Engine {
     template <typename ...T>
     void FSM<T...>::handleEvents() {
         std::visit(
-            [this](auto& state){ state.handleEvents(this); },
+            [this](auto& state){  state.handleEvents(this); },
             m_states.top()
         );
     }

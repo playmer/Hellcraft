@@ -3,8 +3,9 @@
 
 namespace Game {
     // Constructor.
-    Application::Application(int p_windowWidth, int p_windowHeight, std::string p_applicationTitle, std::string p_applicationIcon) 
-    : m_window { p_windowWidth, p_windowHeight, p_applicationTitle, p_applicationIcon }
+    Application::Application(int p_windowWidth, int p_windowHeight, std::string p_applicationTitle, std::string p_applicationIcon) : 
+    m_window { p_windowWidth, p_windowHeight, p_applicationTitle, p_applicationIcon },
+    m_game { Game::Menu{} }
     {
         
     }
@@ -23,7 +24,6 @@ namespace Game {
                 if(f_event.type == sf::Event::Closed) {
                     m_window.getWindow().close();
                 }
-                Logger::log(DEBUG, "Polled for close program event.");
                 m_game.handleEvents();
                 m_game.update();
             }
