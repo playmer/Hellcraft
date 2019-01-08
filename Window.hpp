@@ -2,7 +2,7 @@
 Wrapper for SFML RenderWindow class so I can pass around events without murking up stuff from happening.
 */
 
-// SFML Headers.l
+// SFML Headers.
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Image.hpp>
 // Standard Headers.
