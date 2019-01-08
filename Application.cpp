@@ -4,13 +4,9 @@
 namespace Game {
     // Constructor.
     Application::Application(int p_windowWidth, int p_windowHeight, std::string p_applicationTitle, std::string p_applicationIcon) 
-    : m_window { sf::VideoMode(p_windowWidth, p_windowHeight), p_applicationTitle },
-      m_game { Game::Menu{} }
+    : m_window { p_windowWidth, p_windowHeight, p_applicationTitle, p_applicationIcon }
     {
-        // Create the SFML icon and set it.
-        m_icon.loadFromFile(p_applicationIcon);
-        m_window.setIcon(m_icon.getSize().x, m_icon.getSize().y, m_icon.getPixelsPtr());
-        Logger::log(INFO, "Created game window, set the icon.");
+
     }
 
     // Destructor.
@@ -20,19 +16,19 @@ namespace Game {
 
     // Main application loop.
     void Application::applicationLoop() {
-        while(m_window.isOpen()){
+        while(m_window.getWindow().isOpen()){
             // Used to capture events.
-            sf::Event event;
-            while(m_window.pollEvent(event)) {
-                if(event.type == sf::Event::Closed) {
-                    m_window.close();
+            sf::Event f_event;
+            while(m_window.getWindow().pollEvent(f_event)) {
+                if(f_event.type == sf::Event::Closed) {
+                    m_window.getWindow().close();
                 }
                 m_game.handleEvents();
                 m_game.update();
             }
-            m_window.clear();
+            m_window.getWindow().clear();
             m_game.draw();
-            m_window.display();
+            m_window.getWindow().display();
         }
     }
 }

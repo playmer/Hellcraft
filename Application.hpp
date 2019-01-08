@@ -6,9 +6,8 @@ as well as manage the other systems and keep various parts from interacting/
 depending on each other if not needed.
 */
 
-// SFML Headers.
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Image.hpp>
+// Wrapper Headers.
+#include "Window.hpp"
 // Project Headers.
 #include "Log.hpp"
 #include "FSM.hpp"
@@ -24,9 +23,8 @@ namespace Game {
 
     private:
         // Window related items.
-        sf::RenderWindow m_window;
+        Engine::Window m_window;
         // Game state machine.
         Engine::FSM<Game::Menu> m_game;
-        sf::Image m_icon;
     };
 }
