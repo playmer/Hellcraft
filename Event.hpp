@@ -11,22 +11,9 @@ namespace Engine {
     class Event {
     public:
         Event();
-        auto getEvent();
-        void setEvent(sf::Event p_event);
+        sf::Event& getEvent();
 
     private:
         sf::Event m_event;
     };
-
-    Event::Event() : m_event {} {
-
-    }
-
-    auto Event::getEvent() {
-        return m_event;
-    }
-
-    void Event::setEvent(sf::Event p_event) {
-        m_event = p_event;
-    }
 }

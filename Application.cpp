@@ -23,6 +23,7 @@ namespace Game {
                 if(f_event.type == sf::Event::Closed) {
                     m_window.getWindow().close();
                 }
+                Logger::log(DEBUG, "Polled for close program event.");
                 m_game.handleEvents();
                 m_game.update();
             }
