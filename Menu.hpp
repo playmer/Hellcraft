@@ -28,11 +28,11 @@ namespace Game {
     };
 
     void Menu::init() {
-
+        Logger::log(INFO, "Initializing menu.");
     }
 
     void Menu::cleanup() {
-
+        Logger::log(INFO, "Cleaning up menu.");
     }
 
     void Menu::pause() {

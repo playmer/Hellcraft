@@ -3,21 +3,6 @@
 /*
 State machine to manage game states and transitions.
 Part of the game engine.
-
-States need the following functions implemented:
-
-inline void init();
-inline void cleanup();
-
-inline void pause();
-inline void resume();
-
-template <typename FSM> 
-void handleEvents(FSM* p_fsm);
-template <typename FSM> 
-void update(FSM* p_fsm);
-template <typename FSM> 
-void draw(FSM* p_fsm);
 */
 
 // Standard Headers.

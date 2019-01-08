@@ -10,6 +10,7 @@ depending on each other if not needed.
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Image.hpp>
 // Project Headers.
+#include "Log.hpp"
 #include "FSM.hpp"
 #include "Menu.hpp"
 

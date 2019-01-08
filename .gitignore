@@ -34,3 +34,4 @@
 # ETC
 .vscode/*
 *.code-workspace
+*.txt

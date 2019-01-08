@@ -10,16 +10,16 @@ namespace Game {
         // Create the SFML icon and set it.
         m_icon.loadFromFile(p_applicationIcon);
         m_window.setIcon(m_icon.getSize().x, m_icon.getSize().y, m_icon.getPixelsPtr());
+        Logger::log(INFO, "Created game window, set the icon.");
     }
 
     // Destructor.
     Application::~Application() {
-
+        Logger::log(INFO, "Destroyed game.");
     } 
 
     // Main application loop.
     void Application::applicationLoop() {
-        // While 
         while(m_window.isOpen()){
             // Used to capture events.
             sf::Event event;
@@ -34,6 +34,5 @@ namespace Game {
             m_game.draw();
             m_window.display();
         }
-        //
     }
 }
