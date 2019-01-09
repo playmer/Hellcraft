@@ -48,7 +48,7 @@ namespace Game {
 
     template <typename FSM> 
     void Menu::handleEvents(FSM* p_fsm, Engine::Event p_event) {
-
+        
     }
 
     template <typename FSM> 
