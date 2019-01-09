@@ -9,6 +9,9 @@ Implements a Menu which is based off the State abstract class.
 // Wrapper Headers.
 #include "Window.hpp"
 #include "Event.hpp"
+// SFML Headers.
+#include <SFML/Graphics/Text.hpp>
+#include <SFML/Graphics/Font.hpp>
 
 namespace Game {
     template <typename ...T>
@@ -58,6 +61,13 @@ namespace Game {
 
     template <typename FSM> 
     void Menu::draw(FSM* p_fsm, Engine::Window* p_window) {
-
+        sf::Font f_font;
+        f_font.loadFromFile("Assets/Font.ttf");
+        sf::Text f_text;
+        f_text.setFont(f_font);
+        f_text.setString("Hello, World! My name is Juliette!");
+        f_text.setCharacterSize(18);
+        f_text.setFillColor(sf::Color::White);
+        p_window->getWindow().draw(f_text);
     }
 }
