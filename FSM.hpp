@@ -37,7 +37,7 @@ namespace Engine {
 
         template <class defaultState>
         FSM(defaultState&& f_ds) {
-            Logger::log(INFO, "Move constructor called.");
+            Logger::log(INFO, "FSM created via move constructor.");
             init();
             m_states.push(std::move(f_ds));
             std::visit(
@@ -54,7 +54,7 @@ namespace Engine {
     // Default constructor.
     template <typename ...T>
     FSM<T...>::FSM() {
-        Logger::log(ERROR, "Default constructor called.");
+        Logger::log(ERROR, "Default FSM constructor called.");
         init();
     }
 
