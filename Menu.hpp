@@ -27,7 +27,7 @@ namespace Game {
         template <typename FSM> 
         void update(FSM* p_fsm);
         template <typename FSM> 
-        void draw(FSM* p_fsm, Engine::Window p_window);
+        void draw(FSM* p_fsm, Engine::Window* p_window);
     };
 
     void Menu::init() {
@@ -57,7 +57,7 @@ namespace Game {
     }
 
     template <typename FSM> 
-    void Menu::draw(FSM* p_fsm, Engine::Window p_window) {
+    void Menu::draw(FSM* p_fsm, Engine::Window* p_window) {
 
     }
 }

@@ -25,6 +25,7 @@ namespace Game {
     private:
         // Window related items.
         Engine::Window m_window;
+        Engine::Window* pm_window;
         // Game state machine.
         Engine::FSM<Game::Menu> m_game;
     };
