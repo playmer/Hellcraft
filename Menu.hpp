@@ -7,6 +7,8 @@ Implements a Menu which is based off the State abstract class.
 // Project Headers.
 #include "FSM.hpp"
 // Wrapper Headers.
+#include "Window.hpp"
+#include "Event.hpp"
 
 namespace Game {
     template <typename ...T>
@@ -21,11 +23,11 @@ namespace Game {
         inline void resume();
 
         template <typename FSM> 
-        void handleEvents(FSM* p_fsm);
+        void handleEvents(FSM* p_fsm, Engine::Event p_event);
         template <typename FSM> 
         void update(FSM* p_fsm);
         template <typename FSM> 
-        void draw(FSM* p_fsm);
+        void draw(FSM* p_fsm, Engine::Window p_window);
     };
 
     void Menu::init() {
@@ -45,7 +47,7 @@ namespace Game {
     }
 
     template <typename FSM> 
-    void Menu::handleEvents(FSM* p_fsm) {
+    void Menu::handleEvents(FSM* p_fsm, Engine::Event p_event) {
 
     }
 
@@ -55,7 +57,7 @@ namespace Game {
     }
 
     template <typename FSM> 
-    void Menu::draw(FSM* p_fsm) {
+    void Menu::draw(FSM* p_fsm, Engine::Window p_window) {
 
     }
 }

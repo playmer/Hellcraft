@@ -7,6 +7,9 @@ Part of the game engine.
 
 // Project Headers.
 #include "Log.hpp"
+// Wrapper Headers.
+#include "Window.hpp"
+#include "Event.hpp"
 // Standard Headers.
 #include <stack>
 #include <variant>
@@ -25,9 +28,9 @@ namespace Engine {
         void pushState(State p_state);
         void popState();
 
-        void handleEvents();
+        void handleEvents(Event p_event);
         void update();
-        void draw();
+        void draw(Window p_window);
         
         FSM();
         ~FSM();
@@ -58,6 +61,7 @@ namespace Engine {
     // Destructor.
     template <typename ...T>
     FSM<T...>::~FSM() {
+        Logger::log(INFO, "FSM destructor called.");
         cleanup();
     }
 
@@ -81,6 +85,7 @@ namespace Engine {
             m_states.pop();
         }
         m_running = false;
+        Logger::log(INFO, "FSM was cleaned up.");
     }
 
     // Transition to a new state without preserving old one.
@@ -142,9 +147,9 @@ namespace Engine {
 
     // Let the state handle events.
     template <typename ...T>
-    void FSM<T...>::handleEvents() {
+    void FSM<T...>::handleEvents(Event p_event) {
         std::visit(
-            [this](auto& state){  state.handleEvents(this); },
+            [this, p_event](auto& state){  state.handleEvents(this, p_event); },
             m_states.top()
         );
     }
@@ -160,9 +165,9 @@ namespace Engine {
 
     // Let the state draw.
     template <typename ...T>
-    void FSM<T...>::draw() {
+    void FSM<T...>::draw(Window p_window) {
         std::visit(
-            [this](auto& state){ state.draw(this); },
+            [this, p_window](auto& state){ state.draw(this, p_window); },
             m_states.top()
         );
     }

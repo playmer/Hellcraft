@@ -8,6 +8,7 @@ depending on each other if not needed.
 
 // Wrapper Headers.
 #include "Window.hpp"
+#include "Event.hpp"
 // Project Headers.
 #include "Log.hpp"
 #include "FSM.hpp"

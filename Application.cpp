@@ -19,16 +19,13 @@ namespace Game {
     void Application::applicationLoop() {
         while(m_window.getWindow().isOpen()){
             // Used to capture events.
-            sf::Event f_event;
-            while(m_window.getWindow().pollEvent(f_event)) {
-                if(f_event.type == sf::Event::Closed) {
-                    m_window.getWindow().close();
-                }
-                m_game.handleEvents();
+            Engine::Event f_event;
+            while(m_window.getWindow().pollEvent(f_event.getEvent())) {
+                m_game.handleEvents(f_event);
                 m_game.update();
             }
             m_window.getWindow().clear();
-            m_game.draw();
+            m_game.draw(m_window);
             m_window.getWindow().display();
         }
     }

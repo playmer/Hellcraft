@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 Wrapper for SFML RenderWindow class so I can pass around events without murking up stuff from happening.
 */
@@ -5,6 +7,7 @@ Wrapper for SFML RenderWindow class so I can pass around events without murking 
 // SFML Headers.
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Image.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 // Standard Headers.
 #include <string>
 // Project Headers.
