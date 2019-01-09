@@ -17,18 +17,14 @@ Use the various error levels by naming them and simply passing the info and what
 // String class for names and parameters passed around.
 #include <string>
 
-#define FATAL Logger::Level::Fatal
 #define ERROR Logger::Level::Error
-#define WARNING Logger::Level::Warning
 #define INFO Logger::Level::Info
 #define DEBUG Logger::Level::Debug
 
 namespace Logger {
     // Severity level enum.
     enum class Level {
-        Fatal,
         Error,
-        Warning,
         Info,
         Debug
     };
@@ -48,6 +44,6 @@ namespace Logger {
     private:
         // File for logging.
         std::ofstream m_logfile;
-        std::string levels[5] = {"Fatal", "Error", "Warning", "Info", "Debug"};
+        std::string levels[3] = {"Error", "Info", "Debug"};
     };
 }
