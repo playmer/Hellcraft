@@ -13,6 +13,8 @@ depending on each other if not needed.
 #include "Log.hpp"
 #include "FSM.hpp"
 #include "Menu.hpp"
+// Wrapper Headers.
+#include "Clock.hpp"
 
 namespace Game {
     class Application {
@@ -28,5 +30,7 @@ namespace Game {
         Engine::Window* pm_window;
         // Game state machine.
         Engine::FSM<Game::Menu> m_game;
+        // Game clock.
+        Engine::Clock m_clock;
     };
 }
