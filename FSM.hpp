@@ -9,6 +9,7 @@ Part of the game engine.
 #include "Log.hpp"
 // Wrapper Headers.
 #include "Window.hpp"
+#include "Clock.hpp"
 #include "Event.hpp"
 // Standard Headers.
 #include <stack>
@@ -28,8 +29,8 @@ namespace Engine {
         void pushState(State p_state);
         void popState();
 
-        void handleEvents(Event p_event);
-        void update();
+        void handleEvents(const Event& p_event);
+        void update(const Clock& p_clock);
         void draw(Window* p_window);
         
         FSM();
@@ -147,7 +148,7 @@ namespace Engine {
 
     // Let the state handle events.
     template <typename ...T>
-    void FSM<T...>::handleEvents(Event p_event) {
+    void FSM<T...>::handleEvents(const Event& p_event) {
         std::visit(
             [this, p_event](auto& state){  state.handleEvents(this, p_event); },
             m_states.top()
@@ -156,9 +157,9 @@ namespace Engine {
 
     // Let the state update info, actors, etc.
     template <typename ...T>
-    void FSM<T...>::update() {
+    void FSM<T...>::update(const Clock& p_clock) {
         std::visit(
-            [this](auto& state){ state.update(this); },
+            [this, p_clock](auto& state){ state.update(this, p_clock); },
             m_states.top()
         );
     }

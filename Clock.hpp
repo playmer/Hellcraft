@@ -10,7 +10,7 @@ Clock class to hold onto deltatime and returns current time thanks to std::chron
 namespace Engine {
     class Clock {
     public:
-        Clock(int p_dt);
+        Clock(double p_dt);
         ~Clock();
 
         double getTime();

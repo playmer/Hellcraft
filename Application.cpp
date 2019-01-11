@@ -43,12 +43,10 @@ namespace Game {
 
             // Handle more clock stuff then render after sending update.
             while(f_accumulator >= m_clock.getDeltaTime()) {
-                m_game.update(); // FIXME: Change this so I can pass in a clock.
-                m_clock.addTimeStep();
+                m_game.update(m_clock);
+                m_clock.addTimeStep();  
                 f_accumulator -= m_clock.getDeltaTime();
             }
-            
-            // TODO: Something something blending?
 
             m_window.getWindow().clear();
             m_game.draw(pm_window);

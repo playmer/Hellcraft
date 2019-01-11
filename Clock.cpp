@@ -2,9 +2,13 @@
 #include "Clock.hpp"
 
 namespace Engine {
-    Clock::Clock(int p_dt) :
+    Clock::Clock(double p_dt) :
     m_time { 0.0 }, m_dt { p_dt } 
     {
+        
+    }
+
+    Clock::~Clock() {
         
     }
 
