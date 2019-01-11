@@ -24,7 +24,7 @@ namespace Game {
         // Start game loop.
         while(m_window.getWindow().isOpen()){
             // Handle clock stuff.
-            double f_newTime = m_clock.getCurrentTime();
+            double f_newTime = Engine::Clock::getCurrentTime();
             double f_frameTime = f_newTime - f_currentTime;
             if(f_frameTime > 0.25) {
                 f_frameTime = 0.25;
@@ -44,7 +44,7 @@ namespace Game {
             // Handle more clock stuff then render after sending update.
             while(f_accumulator >= m_clock.getDeltaTime()) {
                 m_game.update(m_clock);
-                m_clock.addTimeStep();  
+                m_clock.setTime(m_clock.getTime() + m_clock.getDeltaTime());
                 f_accumulator -= m_clock.getDeltaTime();
             }
 

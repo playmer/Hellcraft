@@ -13,10 +13,13 @@ namespace Engine {
         Clock(double p_dt);
         ~Clock();
 
+        void setTime(double p_time);
         double getTime();
+
+        void setDeltaTime(double p_dt);
         double getDeltaTime();
-        double getCurrentTime();
-        void addTimeStep();
+
+        static double getCurrentTime();
         
     private:
         double m_time;
