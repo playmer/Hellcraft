@@ -42,11 +42,11 @@ namespace Game {
 
     Menu::Menu() : m_texture{ "Assets/Tileset.png", 16, 368, 32, 32 }, m_sprite { m_texture }
     {
-        Logger::log(DEBUG, "Menu constructor called!");
+        Logger::log(INFO, "Menu constructor called!");
     }
 
     Menu::~Menu() {
-        Logger::log(ERROR, "Menu destroyed!");
+        Logger::log(INFO, "Menu destroyed!");
     }
 
     void Menu::init() {
