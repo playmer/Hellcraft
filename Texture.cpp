@@ -18,7 +18,7 @@ namespace Engine {
 
     }
 
-    sf::Texture Texture::getTexture() const {
+    const sf::Texture& Texture::getTexture() const {
         return m_texture;
     }
 }
