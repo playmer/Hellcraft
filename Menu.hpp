@@ -46,7 +46,7 @@ namespace Game {
     }
 
     Menu::~Menu() {
-
+        Logger::log(ERROR, "Menu destroyed!");
     }
 
     void Menu::init() {
