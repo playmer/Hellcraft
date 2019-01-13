@@ -16,7 +16,7 @@ namespace Engine {
         m_time = p_time;
     }
 
-    double Clock::getTime() {
+    double Clock::getTime() const {
         return m_time;
     }
 
@@ -24,7 +24,7 @@ namespace Engine {
         m_dt = p_dt;
     }
 
-    double Clock::getDeltaTime() {
+    double Clock::getDeltaTime() const {
         return m_dt;
     }
 

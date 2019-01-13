@@ -14,10 +14,10 @@ namespace Engine {
         ~Clock();
 
         void setTime(double p_time);
-        double getTime();
+        double getTime() const;
 
         void setDeltaTime(double p_dt);
-        double getDeltaTime();
+        double getDeltaTime() const;
 
         static double getCurrentTime();
         
