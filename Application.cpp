@@ -18,7 +18,7 @@ namespace Game {
     // Main application loop.
     void Application::applicationLoop() {
         // Set up game clock related stuff.
-        double f_currentTime = m_clock.getCurrentTime();
+        double f_currentTime = Engine::Clock::getCurrentTime();
         double f_accumulator = 0.0;
 
         // Start game loop.
@@ -35,6 +35,8 @@ namespace Game {
             // Used to capture events, and fire signals in state based off them.
             Engine::Event f_event;
             while(m_window.getWindow().pollEvent(f_event.getEvent())) {
+                // I really really hate the fact that this if statement exists here.. 
+                // But I'll fix it up later.
                 if(f_event.getEvent().type == sf::Event::Closed){
                     pm_window->getWindow().close();
                 }
