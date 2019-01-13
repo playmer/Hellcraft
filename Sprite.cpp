@@ -7,14 +7,16 @@ namespace Engine {
     }
 
     Sprite::Sprite(const Texture& p_texture) {
+        Logger::log(DEBUG, "Sprite with param-constructor called.");
         loadTexture(p_texture);
     }
 
     Sprite::~Sprite() {
-
+        Logger::log(DEBUG, "Sprite destroyed!");
     }
 
     void Sprite::loadTexture(const Texture& p_texture) {
+        Logger::log(DEBUG, "Sprite loaded with texture.");
         m_sprite.setTexture(p_texture.getTexture());
     }
 

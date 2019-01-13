@@ -19,7 +19,7 @@ namespace Engine {
     }
 
     Texture::~Texture() {
-
+        Logger::log(ERROR, "Texture was destroyed!");
     }
 
     const sf::Texture& Texture::getTexture() const {
