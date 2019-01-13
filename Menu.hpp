@@ -10,6 +10,8 @@ Implements a Menu which is based off the State abstract class.
 #include "Window.hpp"
 #include "Event.hpp"
 #include "Clock.hpp"
+#include "Sprite.hpp"
+#include "Texture.hpp"
 
 namespace Game {
     template <typename ...T>
@@ -17,6 +19,9 @@ namespace Game {
 
     class Menu {
     public:
+        inline Menu();
+        inline ~Menu();
+
         inline void init();
         inline void cleanup();
 
@@ -29,7 +34,20 @@ namespace Game {
         void update(FSM* p_fsm, const Engine::Clock& p_clock);
         template <typename FSM> 
         void draw(FSM* p_fsm, Engine::Window* p_window);
+
+    private:
+        Engine::Texture m_texture;
+        Engine::Sprite m_sprite;
     };
+
+    Menu::Menu() : m_texture{ "Assets/Tileset.png", 16, 368, 32, 32 }, m_sprite { m_texture }
+    {
+
+    }
+
+    Menu::~Menu() {
+
+    }
 
     void Menu::init() {
         Logger::log(INFO, "Initializing menu.");
@@ -59,6 +77,6 @@ namespace Game {
 
     template <typename FSM> 
     void Menu::draw(FSM* p_fsm, Engine::Window* p_window) {
-
+        p_window->getWindow().draw(m_sprite.getSprite());
     }
 }

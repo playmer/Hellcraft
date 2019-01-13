@@ -6,6 +6,10 @@ namespace Engine {
 
     }
 
+    Sprite::Sprite(const Texture& p_texture) {
+        loadTexture(p_texture);
+    }
+
     Sprite::~Sprite() {
 
     }

@@ -14,6 +14,7 @@ namespace Engine {
     class Sprite {
     public:
         Sprite();
+        Sprite(const Texture& p_texture);
         ~Sprite();
         
         void loadTexture(const Texture& p_texture);

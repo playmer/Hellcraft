@@ -2,6 +2,10 @@
 #include "Texture.hpp"
 
 namespace Engine {
+    Texture::Texture() {
+        
+    }
+
     Texture::Texture(const std::string& p_textureFile) {
         if(!m_texture.loadFromFile(p_textureFile)) {
             Logger::log(ERROR, p_textureFile + " could not be loaded!");

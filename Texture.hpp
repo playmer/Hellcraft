@@ -17,6 +17,7 @@ locations to save on the memory foot print.
 namespace Engine {
     class Texture {
     public:
+        Texture();
         // Loads full file into a texture.
         Texture(const std::string& p_textureFile);
         // Loads partial file into a texture.
