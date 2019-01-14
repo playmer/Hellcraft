@@ -9,7 +9,7 @@ If multiple frames the Animation class will break texture up, process into frame
 #include "Log.hpp"
 // SFML Headers.
 #include <SFML/Graphics/Sprite.hpp>
-// Wrapper Headers.
+// Project Headers.
 #include "Texture.hpp"
 
 namespace Engine {

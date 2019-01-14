@@ -6,15 +6,14 @@ as well as manage the other systems and keep various parts from interacting/
 depending on each other if not needed.
 */
 
-// Wrapper Headers.
+// Project Headers.
 #include "Window.hpp"
 #include "Event.hpp"
-// Project Headers.
 #include "Log.hpp"
 #include "FSM.hpp"
 #include "Menu.hpp"
-// Wrapper Headers.
 #include "Clock.hpp"
+#include "View.hpp"
 
 namespace Game {
     class Application {
@@ -31,5 +30,7 @@ namespace Game {
         Engine::FSM<Game::Menu> m_game;
         // Game clock.
         Engine::Clock m_clock;
+        // Game view.
+        Engine::View m_view;
     };
 }

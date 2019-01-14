@@ -7,7 +7,6 @@ Part of the game engine.
 
 // Project Headers.
 #include "Log.hpp"
-// Wrapper Headers.
 #include "Window.hpp"
 #include "Clock.hpp"
 #include "Event.hpp"

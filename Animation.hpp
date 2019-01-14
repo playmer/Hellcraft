@@ -6,14 +6,13 @@ Animation class to play, pause, loop, etc for sprites. Contains logic to create 
 
 // Project Headers.
 #include "Log.hpp"
+#include "Sprite.hpp"
+#include "Texture.hpp"
+#include "Clock.hpp"
 // SFML Headers.
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Transformable.hpp>
-// Wrapper Headers.
-#include "Clock.hpp"
-#include "Sprite.hpp"
-#include "Texture.hpp"
 // Standard Headers.
 #include <vector>
 #include <cmath>
@@ -31,7 +30,7 @@ namespace Engine {
         void cutFrames(int p_x, int p_y, int p_width, int p_height, int p_xsize, int p_ysize);
         void setLooped(bool p_looped);
 
-        void update(const Clock& p_clock);
+        void update(Clock& p_clock);
         void pause();
         void play();
 

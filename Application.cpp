@@ -5,9 +5,9 @@ namespace Game {
     // Constructor.
     Application::Application(int p_windowWidth, int p_windowHeight, std::string p_applicationTitle, std::string p_applicationIcon) : 
     m_window { p_windowWidth, p_windowHeight, p_applicationTitle, p_applicationIcon },
-    m_game { Game::Menu{} }, m_clock { 1.0/60.0 }
+    m_game { Game::Menu{} }, m_clock { 1.0/60.0 }, m_view { 0, 0, p_windowWidth / 4, p_windowHeight / 4 }
     {
-
+        m_window.getWindow().setView(m_view.getView());
     }
 
     // Destructor.

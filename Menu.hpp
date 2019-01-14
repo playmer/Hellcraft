@@ -6,7 +6,6 @@ Implements a Menu which is based off the State abstract class.
 
 // Project Headers.
 #include "FSM.hpp"
-// Wrapper Headers.
 #include "Window.hpp"
 #include "Event.hpp"
 #include "Clock.hpp"

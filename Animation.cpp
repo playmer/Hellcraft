@@ -32,7 +32,7 @@ namespace Engine {
         m_looped = p_looped;
     }
 
-    void Animation::update(const Clock& p_clock) {
+    void Animation::update(Clock& p_clock) {
         if(!m_paused) {
             m_currentTime += p_clock.getDeltaTime();
             if(m_currentTime >= m_frameTime) {
