@@ -12,6 +12,7 @@ Implements a Menu which is based off the State abstract class.
 #include "Clock.hpp"
 #include "Sprite.hpp"
 #include "Texture.hpp"
+#include "Animation.hpp"
 
 namespace Game {
     template <typename ...T>
@@ -38,6 +39,7 @@ namespace Game {
     private:
         Engine::Texture m_texture;
         Engine::Sprite m_sprite;
+        Engine::Animation m_animation;
     };
 
     Menu::Menu() {
@@ -52,6 +54,8 @@ namespace Game {
         Logger::log(INFO, "Initializing menu.");
         m_texture.loadFile("Assets/Tileset.png", 16, 368, 32, 32);
         m_sprite.loadTexture(m_texture);
+        m_animation.init(m_texture, false, true);
+        m_animation.setFrames(16, 368, 256, 32, 32, 32);
     }
 
     void Menu::cleanup() {
