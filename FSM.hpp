@@ -29,8 +29,8 @@ namespace Engine {
         void pushState(State p_state);
         void popState();
 
-        void handleEvents(const Event& p_event);
-        void update(const Clock& p_clock);
+        void handleEvents(Event& p_event);
+        void update(Clock& p_clock);
         void draw(Window& p_window);
         
         FSM();
@@ -148,7 +148,7 @@ namespace Engine {
 
     // Let the state handle events.
     template <typename ...T>
-    void FSM<T...>::handleEvents(const Event& p_event) {
+    void FSM<T...>::handleEvents(Event& p_event) {
         std::visit(
             [this, &p_event](auto& state){  state.handleEvents(*this, p_event); },
             m_states.top()
@@ -157,7 +157,7 @@ namespace Engine {
 
     // Let the state update info, actors, etc.
     template <typename ...T>
-    void FSM<T...>::update(const Clock& p_clock) {
+    void FSM<T...>::update(Clock& p_clock) {
         std::visit(
             [this, &p_clock](auto& state){ state.update(*this, p_clock); },
             m_states.top()

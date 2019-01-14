@@ -30,9 +30,9 @@ namespace Game {
         inline void resume();
 
         template <typename FSM> 
-        void handleEvents(FSM& p_fsm, const Engine::Event& p_event);
+        void handleEvents(FSM& p_fsm, Engine::Event& p_event);
         template <typename FSM> 
-        void update(FSM& p_fsm, const Engine::Clock& p_clock);
+        void update(FSM& p_fsm, Engine::Clock& p_clock);
         template <typename FSM> 
         void draw(FSM& p_fsm, Engine::Window& p_window);
 
@@ -69,12 +69,17 @@ namespace Game {
     }
 
     template <typename FSM> 
-    void Menu::handleEvents(FSM& p_fsm, const Engine::Event& p_event) {
-        
+    void Menu::handleEvents(FSM& p_fsm, Engine::Event& p_event) {
+        if(p_event.getEvent().type == sf::Event::KeyPressed && p_event.getEvent().key.code == sf::Keyboard::P) {
+            m_animation.pause();
+        }
+        if(p_event.getEvent().type == sf::Event::KeyPressed && p_event.getEvent().key.code == sf::Keyboard::R) {
+            m_animation.play();
+        }
     }
 
     template <typename FSM> 
-    void Menu::update(FSM& p_fsm, const Engine::Clock& p_clock) {
+    void Menu::update(FSM& p_fsm, Engine::Clock& p_clock) {
         m_animation.update(p_clock);
     }
 
