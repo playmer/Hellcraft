@@ -52,9 +52,8 @@ namespace Game {
     void Menu::init() {
         Logger::log(INFO, "Initializing menu.");
         m_texture.loadFile("Assets/Tileset.png", 16, 368, 256, 32);
-        m_animation.init(m_texture, false, true);
+        m_animation.init(m_texture, 0.2);
         m_animation.cutFrames(0, 0, 256, 32, 32, 32);
-        m_animation.setFrame(1);
     }
 
     void Menu::cleanup() {
@@ -76,7 +75,7 @@ namespace Game {
 
     template <typename FSM> 
     void Menu::update(FSM* p_fsm, const Engine::Clock& p_clock) {
-
+        m_animation.update(p_clock);
     }
 
     template <typename FSM> 

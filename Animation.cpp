@@ -10,10 +10,13 @@ namespace Engine {
 
     }
 
-    void Animation::init(const Texture& p_texture, bool p_paused, bool p_looped) {
+    void Animation::init(const Texture& p_texture, double p_frameTime, bool p_paused, bool p_looped) {
         m_paused = p_paused;
         m_looped = p_looped;
         m_sprite.loadTexture(p_texture);
+        m_frameTime = p_frameTime;
+        m_currentTime = 0.0;
+        m_currentFrameNumber = 0;
     }
 
     // Only goes for horizontal frames at the moment!
@@ -27,6 +30,26 @@ namespace Engine {
 
     void Animation::setLooped(bool p_looped) {
         m_looped = p_looped;
+    }
+
+    void Animation::update(const Clock& p_clock) {
+        if(!m_paused) {
+            m_currentTime += p_clock.getDeltaTime();
+            if(m_currentTime >= m_frameTime) {
+                m_currentTime = remainder(m_currentTime, m_frameTime);
+                if((m_currentFrameNumber + 1) > m_frameCount) {
+                    m_currentFrameNumber++;
+                    Logger::log(DEBUG, "FRAME ADVANCED");
+                } else {
+                    m_currentFrameNumber = 0;
+                    if(!m_looped) {
+                        m_paused = true;
+                    }
+                    Logger::log(DEBUG, "FRAME RESET TO START");
+                }
+                setFrame(m_currentFrameNumber);
+            }
+        }
     }
 
     void Animation::pause() {
