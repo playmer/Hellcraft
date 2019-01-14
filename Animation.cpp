@@ -37,15 +37,13 @@ namespace Engine {
             m_currentTime += p_clock.getDeltaTime();
             if(m_currentTime >= m_frameTime) {
                 m_currentTime = remainder(m_currentTime, m_frameTime);
-                if((m_currentFrameNumber + 1) > m_frameCount) {
+                if((m_currentFrameNumber + 1) < m_frameCount) {
                     m_currentFrameNumber++;
-                    Logger::log(DEBUG, "FRAME ADVANCED");
                 } else {
                     m_currentFrameNumber = 0;
                     if(!m_looped) {
                         m_paused = true;
                     }
-                    Logger::log(DEBUG, "FRAME RESET TO START");
                 }
                 setFrame(m_currentFrameNumber);
             }
