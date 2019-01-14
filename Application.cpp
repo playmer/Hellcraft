@@ -38,7 +38,7 @@ namespace Game {
                 // I really really hate the fact that this if statement exists here.. 
                 // But I'll fix it up later.
                 if(f_event.getEvent().type == sf::Event::Closed){
-                    pm_window->getWindow().close();
+                    m_window.getWindow().close();
                 }
                 m_game.handleEvents(f_event);
             }
