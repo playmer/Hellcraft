@@ -18,11 +18,12 @@ namespace Engine {
     class Texture {
     public:
         Texture();
-        // Loads full file into a texture.
-        Texture(const std::string& p_textureFile);
-        // Loads partial file into a texture.
-        Texture(const std::string& p_textureFile, int p_x, int p_y, int p_width, int p_height);
         ~Texture();
+        
+        // Loads full file into a texture.
+        void loadFile(const std::string& p_textureFile);
+        // Loads partial file into a texture.
+        void loadFile(const std::string& p_textureFile, int p_x, int p_y, int p_width, int p_height);
 
         const sf::Texture& getTexture() const;
 

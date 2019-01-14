@@ -40,8 +40,7 @@ namespace Game {
         Engine::Sprite m_sprite;
     };
 
-    Menu::Menu() : m_texture{ "Assets/Tileset.png", 16, 368, 32, 32 }, m_sprite { m_texture }
-    {
+    Menu::Menu() {
         Logger::log(INFO, "Menu constructor called!");
     }
 
@@ -51,6 +50,8 @@ namespace Game {
 
     void Menu::init() {
         Logger::log(INFO, "Initializing menu.");
+        m_texture.loadFile("Assets/Tileset.png", 16, 368, 32, 32);
+        m_sprite.loadTexture(m_texture);
     }
 
     void Menu::cleanup() {
