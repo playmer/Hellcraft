@@ -51,7 +51,7 @@ namespace Game {
             }
 
             m_window.getWindow().clear();
-            m_game.draw(pm_window);
+            m_game.draw(m_window);
             m_window.getWindow().display();
         }
     }

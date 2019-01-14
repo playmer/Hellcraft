@@ -31,7 +31,7 @@ namespace Engine {
 
         void handleEvents(const Event& p_event);
         void update(const Clock& p_clock);
-        void draw(Window* p_window);
+        void draw(Window& p_window);
         
         FSM();
         ~FSM();
@@ -150,7 +150,7 @@ namespace Engine {
     template <typename ...T>
     void FSM<T...>::handleEvents(const Event& p_event) {
         std::visit(
-            [this, p_event](auto& state){  state.handleEvents(this, p_event); },
+            [this, &p_event](auto& state){  state.handleEvents(*this, p_event); },
             m_states.top()
         );
     }
@@ -159,16 +159,16 @@ namespace Engine {
     template <typename ...T>
     void FSM<T...>::update(const Clock& p_clock) {
         std::visit(
-            [this, p_clock](auto& state){ state.update(this, p_clock); },
+            [this, &p_clock](auto& state){ state.update(*this, p_clock); },
             m_states.top()
         );
     }
 
     // Let the state draw.
     template <typename ...T>
-    void FSM<T...>::draw(Window* p_window) {
+    void FSM<T...>::draw(Window& p_window) {
         std::visit(
-            [this, p_window](auto& state){ state.draw(this, p_window); },
+            [this, &p_window](auto& state){ state.draw(*this, p_window); },
             m_states.top()
         );
     }
