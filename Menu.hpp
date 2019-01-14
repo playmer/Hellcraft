@@ -51,10 +51,10 @@ namespace Game {
 
     void Menu::init() {
         Logger::log(INFO, "Initializing menu.");
-        m_texture.loadFile("Assets/Tileset.png", 16, 368, 32, 32);
+        m_texture.loadFile("Assets/Tileset.png", 16, 368, 256, 32);
         m_animation.init(m_texture, false, true);
-        m_animation.cutFrames(16, 368, 256, 32, 32, 32);
-        m_animation.setFrame(3);
+        m_animation.cutFrames(0, 0, 256, 32, 32, 32);
+        m_animation.setFrame(1);
     }
 
     void Menu::cleanup() {
