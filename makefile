@@ -7,7 +7,7 @@ INCLUDE_FILES = C:\Users\Rietty\Documents\Libraries\SFML-Install\include
 LIB_FILES = C:\Users\Rietty\Documents\Libraries\SFML-Install\lib
  
 # File names
-EXEC = Release/build # Called build because it is our current project build 
+EXEC = Release/Hellcraft # Called build because it is our current project build 
 SOURCES = $(wildcard *.cpp)
 OBJECTS = $(SOURCES:.cpp=.o)
  
