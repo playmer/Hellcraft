@@ -18,9 +18,9 @@ namespace Engine {
     }
 
     // Only goes for horizontal frames at the moment!
-    void Animation::setFrames(int p_x, int p_y, int p_width, int p_height, int p_xsize, int p_ysize) {
-        int f_frameCount = (p_width / p_xsize);
-        for(int l_currentFrame = 0; l_currentFrame < f_frameCount; ++l_currentFrame) {
+    void Animation::cutFrames(int p_x, int p_y, int p_width, int p_height, int p_xsize, int p_ysize) {
+        m_frameCount = (p_width / p_xsize);
+        for(int l_currentFrame = 0; l_currentFrame < m_frameCount; ++l_currentFrame) {
             m_frames.push_back(sf::IntRect((p_x) + (p_xsize * l_currentFrame), p_y, p_xsize, p_ysize));
         }
     }
@@ -37,7 +37,11 @@ namespace Engine {
         m_paused = false;
     }
 
-    void Animation::draw(sf::RenderTarget& p_target, sf::RenderStates p_states) const {
+    void Animation::setFrame(int p_frameNumber) {
+        m_sprite.setTextureRect(m_frames[p_frameNumber]);
+    }
 
+    void Animation::draw(sf::RenderTarget& p_target, sf::RenderStates p_states) const {
+        p_target.draw(m_sprite.getSprite());
     }
 }

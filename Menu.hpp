@@ -38,7 +38,6 @@ namespace Game {
 
     private:
         Engine::Texture m_texture;
-        Engine::Sprite m_sprite;
         Engine::Animation m_animation;
     };
 
@@ -53,9 +52,9 @@ namespace Game {
     void Menu::init() {
         Logger::log(INFO, "Initializing menu.");
         m_texture.loadFile("Assets/Tileset.png", 16, 368, 32, 32);
-        m_sprite.loadTexture(m_texture);
         m_animation.init(m_texture, false, true);
-        m_animation.setFrames(16, 368, 256, 32, 32, 32);
+        m_animation.cutFrames(16, 368, 256, 32, 32, 32);
+        m_animation.setFrame(3);
     }
 
     void Menu::cleanup() {
@@ -82,6 +81,6 @@ namespace Game {
 
     template <typename FSM> 
     void Menu::draw(FSM* p_fsm, Engine::Window* p_window) {
-        p_window->getWindow().draw(m_sprite.getSprite());
+        p_window->getWindow().draw(m_animation);
     }
 }

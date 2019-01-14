@@ -20,6 +20,10 @@ namespace Engine {
         m_sprite.setTexture(p_texture.getTexture());
     }
 
+    void Sprite::setTextureRect(const sf::IntRect& p_rect) {
+        m_sprite.setTextureRect(p_rect);
+    }
+
     void Sprite::setTextureRect(int p_x, int p_y, int p_width, int p_height) {
         m_sprite.setTextureRect(sf::IntRect(p_x, p_y, p_width, p_height));
     }

@@ -20,6 +20,7 @@ namespace Engine {
         ~Sprite();
         
         void loadTexture(const Texture& p_texture);
+        void setTextureRect(const sf::IntRect& p_rect);
         void setTextureRect(int p_x, int p_y, int p_width, int p_height);
         void setColour(int p_r, int p_g, int p_b, int p_alpha);
         // Returns a reference to sprite.
