@@ -40,7 +40,7 @@ namespace Engine {
         FSM(defaultState&& f_ds) {
             Logger::log(INFO, "FSM created via move constructor.");
             init();
-            m_states.push(std::move(f_ds));
+            m_states.emplace(std::move(f_ds));
             std::visit(
                 [](auto &state){ state.init(); },
                 m_states.top()
@@ -101,7 +101,7 @@ namespace Engine {
             m_states.pop();
         }
         // Store and start up new state.
-        m_states.push(std::move(p_state));
+        m_states.emplace(std::move(p_state));
         std::visit(
             [](auto& state){ state.init(); },
             m_states.top()
@@ -119,7 +119,7 @@ namespace Engine {
             );
         }
         // Switch to new one and start it up.
-        m_states.push(std::move(p_state));
+        m_states.emplace(std::move(p_state));
         std::visit(
             [](auto& state){ state.init(); },
             m_states.top()
