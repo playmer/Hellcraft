@@ -21,7 +21,7 @@ namespace Engine {
         using Loader = std::shared_ptr<std::any> (*)(std::string);
 
         template<typename T> 
-        void addResource(std::string p_resourceName);
+        void addResource(std::string p_resourceName, std::string p_resourceLocation);
         template<typename T> 
         void addResourceType(Loader p_function);
         template<typename T>
@@ -32,11 +32,11 @@ namespace Engine {
     };
 
     template<typename T> 
-    void Manager::addResource(std::string p_resourceName) {
+    void Manager::addResource(std::string p_resourceName, std::string p_resourceLocation) {
         auto f_it = m_types.find(typeid(T).name());
         if(f_it != m_types.end()) {
             auto& f_type = f_it->second;
-            f_type.m_resources.emplace(p_resourceName, std::move(f_type.m_loader(p_resourceName)));
+            f_type.m_resources.emplace(p_resourceName, std::move(f_type.m_loader(p_resourceLocation)));
         }
     }
 
