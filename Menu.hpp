@@ -12,6 +12,7 @@ Implements a Menu which is based off the State abstract class.
 #include "Sprite.hpp"
 #include "Texture.hpp"
 #include "Animation.hpp"
+#include "Manager.hpp"
 
 namespace Game {
     template <typename ...T>
@@ -38,6 +39,7 @@ namespace Game {
     private:
         Engine::Texture m_texture;
         Engine::Animation m_animation;
+        Engine::Manager m_resourceManager;
     };
 
     Menu::Menu() {

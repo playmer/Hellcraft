@@ -51,8 +51,8 @@ namespace Engine {
         auto f_it = m_types.find(typeid(T).name());
         if(f_it != m_types.end()) {
             auto& f_type = f_it->second;
-            auto f_resourceIt = type.m_resources.find(p_resourceName);
-            if(f_resourceIt != type.m_resources.end()) {
+            auto f_resourceIt = f_type.m_resources.find(p_resourceName);
+            if(f_resourceIt != f_type.m_resources.end()) {
                 return Resource<T>{ f_resourceIt->second };
             }
         }

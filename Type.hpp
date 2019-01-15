@@ -15,7 +15,7 @@ namespace Engine {
     public:
         using Loader = std::shared_ptr<std::any> (*)(std::string);
         
-        Type::Type(Loader p_function) : m_loader { p_function } {
+        Type(Loader p_function) : m_loader { p_function } {
 
         }
         
