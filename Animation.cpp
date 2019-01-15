@@ -26,6 +26,7 @@ namespace Engine {
         for(int l_currentFrame = 0; l_currentFrame < m_frameCount; ++l_currentFrame) {
             m_frames.push_back(sf::IntRect((p_xsize * l_currentFrame), p_y, p_xsize, p_ysize));
         }
+        setFrame(0); // Set current frame to 0. 
     }
 
     void Animation::setLooped(bool p_looped) {
