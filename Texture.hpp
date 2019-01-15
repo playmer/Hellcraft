@@ -11,6 +11,8 @@ locations to save on the memory foot print.
 #include <SFML/Graphics/Texture.hpp>
 // Standard Headers.
 #include <string>
+#include <any>
+#include <memory>
 // Project Headers.
 #include "Log.hpp"
 
@@ -20,12 +22,11 @@ namespace Engine {
         Texture();
         ~Texture();
         
-        // Loads full file into a texture.
-        void loadFile(const std::string& p_textureFile);
         // Loads partial file into a texture.
         void loadFile(const std::string& p_textureFile, int p_x, int p_y, int p_width, int p_height);
 
         const sf::Texture& getTexture() const;
+        static std::shared_ptr<std::any> loadTexture(const std::string& p_textureFile, int p_x, int p_y, int p_width, int p_height);
 
     private:
         sf::Texture m_texture;
