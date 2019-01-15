@@ -55,13 +55,13 @@ namespace Game {
         Logger::log(INFO, "Initializing menu.");
         m_resourceManager.addResourceType<Engine::Texture>(&Engine::Texture::loadTexture);
         m_resourceManager.addResource<Engine::Texture>("Tileset", "Assets/Tileset.png");
-        m_animation.init(m_resourceManager.getResource<Engine::Texture>("Tileset"), 7.5);
+        m_animation.init(*m_resourceManager.getResource<Engine::Texture>("Tileset"), 7.5);
         m_animation.cutFrames(0, 0, 256, 32, 32, 32);
     }
 
     void Menu::cleanup() {
         Logger::log(INFO, "Cleaning up menu.");
-    }
+    }   
 
     void Menu::pause() {
 
