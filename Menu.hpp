@@ -4,6 +4,8 @@
 Implements a Menu which is based off the State abstract class.
 */
 
+// Standard Headers.
+#include <string>
 // Project Headers.
 #include "FSM.hpp"
 #include "Window.hpp"
@@ -52,7 +54,8 @@ namespace Game {
     void Menu::init() {
         Logger::log(INFO, "Initializing menu.");
         m_resourceManager.addResourceType<Engine::Texture>(&Engine::Texture::loadTexture);
-        // m_animation.init(m_texture, 7.5);
+        m_resourceManager.addResource<Engine::Texture>("Tileset", "Assets/Tileset.png");
+        m_animation.init(m_resourceManager.getResource<Engine::Texture>("Tileset"), 7.5);
         m_animation.cutFrames(0, 0, 256, 32, 32, 32);
     }
 

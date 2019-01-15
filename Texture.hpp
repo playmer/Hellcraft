@@ -23,10 +23,10 @@ namespace Engine {
         ~Texture();
         
         // Loads partial file into a texture.
-        void loadFile(const std::string& p_textureFile, int p_x, int p_y, int p_width, int p_height);
+        void loadFile(const std::string& p_textureFile);
 
         const sf::Texture& getTexture() const;
-        static std::shared_ptr<std::any> loadTexture(const std::string& p_textureFile, int p_x, int p_y, int p_width, int p_height);
+        static std::shared_ptr<std::any> loadTexture(std::string p_textureFile);
 
     private:
         sf::Texture m_texture;
