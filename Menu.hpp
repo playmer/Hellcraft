@@ -56,7 +56,7 @@ namespace Game {
         m_resourceManager.addResourceType<Engine::Texture>(&Engine::Texture::loadTexture);
         m_resourceManager.addResource<Engine::Texture>("Tileset", "Assets/Tileset.png");
         m_animation.init(*m_resourceManager.getResource<Engine::Texture>("Tileset"), 7.5);
-        m_animation.cutFrames(0, 0, 256, 32, 32, 32);
+        m_animation.cutFrames(16, 364, 128, 36, 32, 36);
     }
 
     void Menu::cleanup() {
@@ -71,7 +71,7 @@ namespace Game {
 
     }
 
-    template <typename FSM> 
+    template <typename FSM>     
     void Menu::handleEvents(FSM& p_fsm, Engine::Event& p_event) {
         if(p_event.getEvent().type == sf::Event::KeyPressed && p_event.getEvent().key.code == sf::Keyboard::P) {
             m_animation.pause();

@@ -7,8 +7,8 @@ Just a virtual class pretty much..
 namespace Engine {
     class Asset {
     public:
-        virtual ~Asset() = default;
-    protected:
-        Asset() = default;
+        virtual ~Asset() = 0;
     };
+
+    inline Asset::~Asset() = default; 
 }
