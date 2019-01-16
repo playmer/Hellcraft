@@ -13,6 +13,7 @@ Uses templates under the hood to accomplish this in a generic way.
 #include <unordered_map>
 // Project Headers.
 #include "Type.hpp"
+#include "Log.hpp"
 #include "Resource.hpp"
 
 namespace Engine {
