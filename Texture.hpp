@@ -18,7 +18,7 @@ locations to save on the memory foot print.
 #include "Asset.hpp"
 
 namespace Engine {
-    class Texture : Asset {
+    class Texture : public Asset {
     public:
         Texture();
         ~Texture();
