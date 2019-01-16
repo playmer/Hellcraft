@@ -5,6 +5,7 @@ CC_FLAGS = -std=c++17 -Wall -g
 LINKER_FLAGS =  -lsfml-graphics -lsfml-window -lsfml-system -mwindows
 INCLUDE_FILES = C:\Users\Rietty\Documents\Libraries\SFML-Install\include
 LIB_FILES = C:\Users\Rietty\Documents\Libraries\SFML-Install\lib
+RESOURCE_FILES = Icon.res
  
 # File names
 EXEC = Release/Hellcraft # Called build because it is our current project build 
@@ -15,7 +16,7 @@ all: $(EXEC)
 
 # Main target
 $(EXEC): $(OBJECTS)
-	$(CC) -L $(LIB_FILES) $(OBJECTS) -o $(EXEC) $(LINKER_FLAGS)
+	$(CC) -L $(LIB_FILES) $(OBJECTS) $(RESOURCE_FILES) -o $(EXEC) $(LINKER_FLAGS) 
  
 # To obtain object files
 %.o: %.cpp
