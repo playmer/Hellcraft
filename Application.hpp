@@ -13,6 +13,7 @@ depending on each other if not needed.
 #include "FSM.hpp"
 #include "Menu.hpp"
 #include "Clock.hpp"
+#include "GS.hpp"
 #include "View.hpp"
 
 namespace Game {
@@ -27,7 +28,7 @@ namespace Game {
         // Window related items.
         Engine::Window m_window;
         // Game state machine.
-        Engine::FSM<Game::Menu> m_game;
+        Engine::FSM<Game::Menu, Game::GS> m_game;
         // Game clock.
         Engine::Clock m_clock;
         // Game view.
