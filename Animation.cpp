@@ -24,7 +24,7 @@ namespace Engine {
     void Animation::cutFrames(int p_x, int p_y, int p_width, int p_height, int p_xsize, int p_ysize) {
         m_frameCount = (p_width / p_xsize);
         for(int l_currentFrame = 0; l_currentFrame < m_frameCount; ++l_currentFrame) {
-            m_frames.push_back(sf::IntRect((p_xsize * l_currentFrame), p_y, p_xsize, p_ysize));
+            m_frames.push_back(sf::IntRect(p_x + (p_xsize * l_currentFrame), p_y, p_xsize, p_ysize));
         }
         setFrame(0); // Set current frame to 0. 
     }
