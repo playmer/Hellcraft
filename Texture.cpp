@@ -21,8 +21,8 @@ namespace Engine {
     }
 
     std::shared_ptr<Asset> Texture::loadTexture(std::string p_textureFile) {
-        auto f_texture = std::make_shared<Asset>(Texture{});
-        auto& f_textureReference = std::static_cast<Texture&>(*f_texture);
+        auto f_texture = std::make_shared<Texture>(Texture{});
+        auto& f_textureReference = static_cast<Texture&>(*f_texture);
         f_textureReference.loadFile(p_textureFile);
         return f_texture;
     }
