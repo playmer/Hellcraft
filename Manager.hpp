@@ -14,12 +14,13 @@ Uses templates under the hood to accomplish this in a generic way.
 // Project Headers.
 #include "Type.hpp"
 #include "Log.hpp"
+#include "Asset.hpp"
 #include "Resource.hpp"
 
 namespace Engine {
     class Manager {
     public:
-        using Loader = std::shared_ptr<std::any> (*)(std::string);
+        using Loader = std::shared_ptr<Asset> (*)(std::string);
 
         template<typename T> 
         void addResource(std::string p_resourceName, std::string p_resourceLocation);

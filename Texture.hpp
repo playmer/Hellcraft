@@ -10,14 +10,15 @@ locations to save on the memory foot print.
 // SFML Headers.
 #include <SFML/Graphics/Texture.hpp>
 // Standard Headers.
-#include <string>
 #include <any>
+#include <string>
 #include <memory>
 // Project Headers.
 #include "Log.hpp"
+#include "Asset.hpp"
 
 namespace Engine {
-    class Texture {
+    class Texture : Asset {
     public:
         Texture();
         ~Texture();
@@ -26,7 +27,7 @@ namespace Engine {
         void loadFile(const std::string& p_textureFile);
 
         const sf::Texture& getTexture() const;
-        static std::shared_ptr<std::any> loadTexture(std::string p_textureFile);
+        static std::shared_ptr<Asset> loadTexture(std::string p_textureFile);
 
     private:
         sf::Texture m_texture;
