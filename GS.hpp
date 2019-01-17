@@ -17,6 +17,7 @@ Implements a Game which is based off the State abstract class.
 #include "Window.hpp"
 // Game Headers.
 #include "Menu.hpp"
+#include "Level.hpp"
 
 namespace Game {
     template <typename ...T>
