@@ -2,13 +2,16 @@
 #include "Tilemap.hpp"
 
 namespace Game {
-    Tilemap::Tilemap(int p_width, int p_length) {
-        // Our level will be this size.
-        m_map.reserve(p_width * p_length);
+    Tilemap::Tilemap() {
+        
     }
 
     Tilemap::~Tilemap() {
 
+    }
+
+    void Tilemap::init(int p_width, int p_length) {
+        m_map.reserve(p_width * p_length);
     }
 
     std::vector<int>& Tilemap::getTilemap() {

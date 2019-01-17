@@ -3,7 +3,7 @@
 
 namespace Game {
     Level::Level() {
-
+        m_levelmap.init(100, 100);
     }
 
     Level::~Level() {

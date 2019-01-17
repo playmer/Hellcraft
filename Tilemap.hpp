@@ -14,9 +14,10 @@ namespace Game {
     class Tilemap {
     public:
         // When we make tilemap, we need to make it a certain size.
-        Tilemap(int p_width, int p_length);
+        Tilemap();
         ~Tilemap();
 
+        void init(int p_width, int p_length);
         std::vector<int>& getTilemap();
 
     private:
