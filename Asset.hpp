@@ -1,7 +1,8 @@
 #pragma once
 
 /*
-Just a virtual class pretty much..
+Just a virtual class pretty much as a base for my various game asset classes.
+Used by resource management system.
 */
 
 namespace Engine {
