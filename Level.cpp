@@ -11,7 +11,7 @@ namespace Game {
     }
 
     Tilemap& Level::getMap() {
-        return m_map;
+        return m_levelmap;
     }
 
     void update(Engine::Clock& p_clock) {

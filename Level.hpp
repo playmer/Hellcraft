@@ -22,6 +22,6 @@ namespace Game {
         void update(Engine::Clock& p_clock);
 
     private:
-        Tilemap m_map;
+        Tilemap m_levelmap;
     };
 }
