@@ -4,6 +4,8 @@
 Helper class for BSP generation of dungeon tilemap.
 */
 
+// TODO: Create a struct of points instead of a tuple. Return points.
+
 // Standard Headers.
 #include <tuple>
 #include <utility>
