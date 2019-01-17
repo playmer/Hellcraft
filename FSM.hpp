@@ -5,15 +5,15 @@ State machine to manage game states and transitions.
 Part of the game engine.
 */
 
-// Project Headers.
-#include "Log.hpp"
-#include "Window.hpp"
-#include "Clock.hpp"
-#include "Event.hpp"
 // Standard Headers.
 #include <stack>
-#include <variant>
 #include <utility>
+#include <variant>
+// Engine Headers.
+#include "Clock.hpp"
+#include "Event.hpp"
+#include "Log.hpp"
+#include "Window.hpp"
 
 namespace Engine {
     template <typename ...T>

@@ -5,11 +5,10 @@ Sprite class to hold a texture for a sprite. Can be either a single frame or mul
 If multiple frames the Animation class will break texture up, process into frames and play it.
 */
 
-// Project Headers.
-#include "Log.hpp"
 // SFML Headers.
 #include <SFML/Graphics/Sprite.hpp>
-// Project Headers.
+// Engine Headers.
+#include "Log.hpp"
 #include "Texture.hpp"
 
 namespace Engine {

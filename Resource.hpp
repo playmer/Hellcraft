@@ -4,12 +4,12 @@
 Resource class that is used by the resource manager system.
 */
 
-// Project Headers.
-#include "Asset.hpp"
 // Standard Headers.
-#include <string>
 #include <memory>
+#include <string>
 #include <unordered_map>
+// Engine Headers.
+#include "Asset.hpp"
 
 namespace Engine {
     template <typename T>

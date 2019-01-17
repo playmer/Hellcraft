@@ -1,4 +1,4 @@
-// Project Headers.
+// Engine Headers.
 #include "Clock.hpp"
 
 namespace Engine {

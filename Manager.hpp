@@ -7,15 +7,14 @@ Uses templates under the hood to accomplish this in a generic way.
 */
 
 // Standard Headers.
-#include <any>
-#include <string>
 #include <memory>
+#include <string>
 #include <unordered_map>
-// Project Headers.
-#include "Type.hpp"
-#include "Log.hpp"
+// Engine Headers.
 #include "Asset.hpp"
+#include "Log.hpp"
 #include "Resource.hpp"
+#include "Type.hpp"
 
 namespace Engine {
     class Manager {

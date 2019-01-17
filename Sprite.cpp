@@ -1,4 +1,4 @@
-// Project Headers.
+// Engine Headers.
 #include "Sprite.hpp"
 
 namespace Engine {

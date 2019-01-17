@@ -6,15 +6,16 @@ as well as manage the other systems and keep various parts from interacting/
 depending on each other if not needed.
 */
 
-// Project Headers.
-#include "Window.hpp"
-#include "Event.hpp"
-#include "Log.hpp"
-#include "FSM.hpp"
-#include "Menu.hpp"
+// Engine Headers.
 #include "Clock.hpp"
-#include "GS.hpp"
+#include "Event.hpp"
+#include "FSM.hpp"
+#include "Log.hpp"
 #include "View.hpp"
+#include "Window.hpp"
+// Game Headers.
+#include "GS.hpp"
+#include "Menu.hpp"
 
 namespace Game {
     class Application {

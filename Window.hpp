@@ -10,7 +10,7 @@ Wrapper for SFML RenderWindow class so I can pass around events without murking 
 #include <SFML/Graphics/RenderWindow.hpp>
 // Standard Headers.
 #include <string>
-// Project Headers.
+// Engine Headers.
 #include "Log.hpp"
 
 namespace Engine {

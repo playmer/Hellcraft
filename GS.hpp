@@ -6,16 +6,17 @@ Implements a Game which is based off the State abstract class.
 
 // Standard Headers.
 #include <string>
-// Project Headers.
-#include "FSM.hpp"
-#include "Window.hpp"
-#include "Event.hpp"
+// Engine Headers.
+#include "Animation.hpp"
 #include "Clock.hpp"
+#include "Event.hpp"
+#include "FSM.hpp"
+#include "Manager.hpp"
 #include "Sprite.hpp"
 #include "Texture.hpp"
-#include "Animation.hpp"
+#include "Window.hpp"
+// Game Headers.
 #include "Menu.hpp"
-#include "Manager.hpp"
 
 namespace Game {
     template <typename ...T>

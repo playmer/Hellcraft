@@ -3,7 +3,7 @@
     A game by Juliette Lavoie.
 */
 
-// Project Headers.
+// Engine Headers.
 #include "Application.hpp"
 #include "Log.hpp"
 

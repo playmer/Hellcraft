@@ -1,3 +1,4 @@
+// Engine Headers.
 #include "Log.hpp"
 
 namespace Logger {

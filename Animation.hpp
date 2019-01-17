@@ -4,18 +4,18 @@
 Animation class to play, pause, loop, etc for sprites. Contains logic to create an animated sprite.
 */
 
-// Project Headers.
-#include "Log.hpp"
-#include "Sprite.hpp"
-#include "Texture.hpp"
-#include "Clock.hpp"
 // SFML Headers.
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 // Standard Headers.
-#include <vector>
 #include <cmath>
+#include <vector>
+// Engine Headers.
+#include "Clock.hpp"
+#include "Log.hpp"
+#include "Sprite.hpp"
+#include "Texture.hpp"
 
 namespace Engine {
     // Inherit from these SFML classes so we can have a custom draw function.

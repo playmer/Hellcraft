@@ -1,4 +1,4 @@
-// Projects Headers.
+// Engine Headers.
 #include "Window.hpp"
 
 namespace Engine {

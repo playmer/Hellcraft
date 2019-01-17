@@ -7,10 +7,10 @@ allow emitting of event based data and triggers.
 */
 
 // Standard Headers.
-#include <map>
 #include <cassert>
-#include <iostream>
 #include <functional>
+#include <iostream>
+#include <map>
 
 namespace Engine {
     // Define the ID of slot as an alias of integer.

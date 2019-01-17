@@ -10,10 +10,9 @@ locations to save on the memory foot print.
 // SFML Headers.
 #include <SFML/Graphics/Texture.hpp>
 // Standard Headers.
-#include <any>
-#include <string>
 #include <memory>
-// Project Headers.
+#include <string>
+// Engine Headers.
 #include "Log.hpp"
 #include "Asset.hpp"
 
