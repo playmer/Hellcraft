@@ -14,6 +14,10 @@ namespace Game {
         m_map.reserve(p_width * p_length);
     }
 
+    void Tilemap::generate() {
+        
+    }
+
     std::vector<int>& Tilemap::getTilemap() {
         return m_map;
     }

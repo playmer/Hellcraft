@@ -8,6 +8,8 @@ Also includes dungeon generation features. Map is basically a massive grid held 
 // Standard Headers.
 #include <vector>
 // Game Headers.
+#include "Leaf.hpp"
+#include "Rect.hpp"
 #include "Tiles.hpp"
 
 namespace Game {
@@ -18,6 +20,8 @@ namespace Game {
         ~Tilemap();
 
         void init(int p_width, int p_length);
+        void generate();
+
         std::vector<int>& getTilemap();
 
     private:
