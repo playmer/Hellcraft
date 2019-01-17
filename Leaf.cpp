@@ -2,8 +2,8 @@
 #include "Leaf.hpp"
 
 namespace Game {
-    Leaf::Leaf(int p_x, int p_y, int p_width, int p_height, int p_minLeafSize = 10) :
-    m_x { p_x }, m_y { p_y }, m_width { p_width }, m_height { p_height }, m_minLeafSize { p_minLeafSize },
+    Leaf::Leaf(int p_x, int p_y, int p_width, int p_height) :
+    m_x { p_x }, m_y { p_y }, m_width { p_width }, m_height { p_height }, m_minLeafSize { 10 },
     m_rng { m_rd() }, m_randomBool { 0, 1 }
     {
 
@@ -54,5 +54,14 @@ namespace Game {
     
         // We successfully split our leaf!
         return true;
+    }
+
+    std::optional<std::reference_wrapper<Rect>> Leaf::getRoom() {
+        // If we have a room for this leaf node, return it.
+        if(m_room) {
+            return *m_room;
+        } else {
+            return std::nullopt;
+        }
     }
 }

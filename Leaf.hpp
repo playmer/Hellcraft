@@ -7,16 +7,18 @@ Helper class for BSP generation of dungeon tilemap.
 // Standard Headers.
 #include <memory>
 #include <random>
+#include <optional>
 // Game Headers
 #include "Rect.hpp"
 
 namespace Game {
     class Leaf {
     public:
-        Leaf(int p_x, int p_y, int p_width, int p_height, int p_minLeafSize = 10);
+        Leaf(int p_x, int p_y, int p_width, int p_height);
         ~Leaf();
-
+        
         bool splitLeaf();
+        std::optional<std::reference_wrapper<Rect>> getRoom();
 
     private:
         int m_x, m_y;
