@@ -8,6 +8,7 @@ Also includes dungeon generation features. Map is basically a massive grid held 
 // Standard Headers.
 #include <vector>
 // Game Headers.
+#include "BSP.hpp"
 #include "Leaf.hpp"
 #include "Rect.hpp"
 #include "Tiles.hpp"

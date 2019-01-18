@@ -56,6 +56,23 @@ namespace Game {
         return true;
     }
 
+    void Leaf::createRooms(BSP& p_bsp) {
+        // Search children recursively.
+        if(m_childA || m_childB) {
+            if(m_childA) {
+                m_childA->createRooms(p_bsp);
+            } 
+            if(m_childB) {
+                m_childB->createRooms(p_bsp);
+            } 
+            if(m_childA && m_childB) {
+                p_bsp.createHall(m_childA.get()->getRoom(), m_childB.get()->getRoom());
+            }
+        } else { // Create rooms in end branches.
+
+        }
+    }
+
     std::optional<std::reference_wrapper<Rect>> Leaf::getRoom() {
         // Temp rooms.
         std::optional<std::reference_wrapper<Rect>> f_roomA, f_roomB;

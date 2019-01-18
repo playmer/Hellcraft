@@ -9,6 +9,7 @@ Helper class for BSP generation of dungeon tilemap.
 #include <random>
 #include <optional>
 // Game Headers
+#include "BSP.hpp"
 #include "Rect.hpp"
 
 namespace Game {
@@ -18,6 +19,7 @@ namespace Game {
         ~Leaf();
         
         bool splitLeaf();
+        void createRooms(BSP& p_bsp);
         std::optional<std::reference_wrapper<Rect>> getRoom();
 
     private:
