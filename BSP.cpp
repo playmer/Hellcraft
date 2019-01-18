@@ -121,11 +121,11 @@ namespace Game {
             for(int l_i = 0; l_i < 3; l_i++) {
                 for(int l_x = 1; l_x < m_mapWidth - 1; l_x++) {
                     for(int l_y = 1; l_y < m_mapHeight - 1; l_y++) {
-                        if(m_bspMap[m_mapWidth * l_y + l_x] == Tiles::Floor && getAdjacentWallCount(l_x, l_y) <= m_smoothingFactor){
-                            m_bspMap[m_mapWidth * l_y + l_x] = Tiles::Empty;
+                        if(m_bspMap[p_mapWidth * l_y + l_x] == Tiles::Floor && getAdjacentWallCount(l_x, l_y) <= m_smoothingFactor){
+                            m_bspMap[p_mapWidth * l_y + l_x] = Tiles::Empty;
                         }
-                        if(m_bspMap[m_mapWidth * l_y + l_x] == Tiles::Empty && getAdjacentWallCount(l_x, l_y) >= m_fillingFactor){
-                            m_bspMap[m_mapWidth * l_y + l_x] = Tiles::Floor;
+                        if(m_bspMap[p_mapWidth * l_y + l_x] == Tiles::Empty && getAdjacentWallCount(l_x, l_y) >= m_fillingFactor){
+                            m_bspMap[p_mapWidth * l_y + l_x] = Tiles::Floor;
                         }
                     }
                 }
