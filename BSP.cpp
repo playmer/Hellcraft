@@ -37,8 +37,8 @@ namespace Game {
                     std::uniform_int_distribution<int> f_dist(0, 10);
                     if(l_leaf.getWidth() > m_maxLeafSize || l_leaf.getHeight() > m_maxLeafSize || f_dist(g_rng) > 8) {
                         if(l_leaf.splitLeaf()){
-                            f_leaves.emplace_back(l_leaf.returnChildA());
-                            f_leaves.emplace_back(l_leaf.returnChildB());
+                            f_leaves.emplace_back(std::move(l_leaf.returnChildA().value().get()));
+                            f_leaves.emplace_back(std::move(l_leaf.returnChildB().value().get()));
                             f_splitSuccessfully = true;
                         }
                     } 
@@ -66,7 +66,7 @@ namespace Game {
     void BSP::createHall(Rect& p_roomA, Rect& p_roomB) {
 
     }
-
+    
     void BSP::cleanUpMap(int p_mapWidth, int p_mapHeight) {
 
     }
