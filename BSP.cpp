@@ -37,8 +37,8 @@ namespace Game {
                     std::uniform_int_distribution<int> f_dist(0, 10);
                     if(l_leaf.getWidth() > m_maxLeafSize || l_leaf.getHeight() > m_maxLeafSize || f_dist(g_rng) > 8) {
                         if(l_leaf.splitLeaf()){
-                            f_leaves.emplace_back(std::move(l_leaf.returnChildA()));
-                            f_leaves.emplace_back(std::move(l_leaf.returnChildB()));
+                            f_leaves.emplace_back(l_leaf.returnChildA());
+                            f_leaves.emplace_back(l_leaf.returnChildB());
                             f_splitSuccessfully = true;
                         }
                     } 
