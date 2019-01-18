@@ -121,6 +121,16 @@ namespace Game {
     }
 
     int BSP::getAdjacentWallCount(int p_x, int p_y) {
-        return 42;
+        int f_wallCounter = 0;
+        if(m_bspMap[m_mapWidth * p_x + (p_y - 1)] == Tiles::Floor) {
+            f_wallCounter++;
+        } else if(m_bspMap[m_mapWidth * p_x + (p_y + 1)] == Tiles::Floor) {
+            f_wallCounter++;
+        } else if(m_bspMap[m_mapWidth * (p_x - 1) + p_y] == Tiles::Floor) {
+            f_wallCounter++;
+        } else if(m_bspMap[m_mapWidth * (p_x + 1) + p_y] == Tiles::Floor) {
+            f_wallCounter++;
+        }
+        return f_wallCounter;
     }
 }
