@@ -64,7 +64,56 @@ namespace Game {
     }
 
     void BSP::createHall(Rect& p_roomA, Rect& p_roomB) {
+        auto f_walker = p_roomB.getCenter();
+        auto f_goal = p_roomA.getCenter();
+        while ((f_goal.first <= f_walker.first && f_walker.first <= room1.first) && (room1.second < f_walker.second && f_walker.second < room1.second)) {
+            // Directions.
+            double f_n = 1.0, f_s = 1.0, f_e = 1.0, f_w = 1.0;
+            double f_weightFactor = 1.0;
+            if(f_walker.first < f_goal.first) {
+                f_e += f_weightFactor;
+            } else if(f_walker.first > f_goal.first) {
+                f_w += f_weightFactor;
+            }
+            if(f_walker.second < f_goal.second) {
+                f_s += f_weightFactor;
+            } else if(f_walker.second > f_goal.second) {
+                f_n += f_weightFactor;
+            }
+            // Normalize probablities.
+            double f_total = f_e + f_w + f_n + f_s;
+            f_n /= f_total;
+            f_e /= f_total;
+            f_w /= f_total;
+            f_s /= f_total;
 
+            // Choose direction.
+            int f_dx, f_dy;
+            std::uniform_real_distribution<double> f_choice(0, 1);
+            auto f_dir = f_choice(g_rng);
+            if(0 <= f_dir && f_dir < f_n) {
+                f_dx = 0;
+                f_dy = -1;
+            } else if(f_n <= f_dir && f_dir < (f_n + f_s)) {
+                f_dx = 0;
+                f_dy = 1;
+            } else if((f_n + f_s) <= f_dir && f_dir < (f_n + f_e + f_s)) {
+                f_dx = 1;
+                f_dy = 0;
+            } else {
+                f_dx = -1;
+                f_dy = 0;
+            }
+            // Walk & check edge collision. 
+            if((0 < (f_walker.first + f_dx) && (f_walker.first + f_dx) < m_mapWidth - 1) && 
+               (0 < (f_walker.second + f_dy) && (f_walker.second + f_dy) < m_mapHeight - 1)) {
+                f_walker.first += f_dx;
+                f_walker.second += f_dy;
+                if(m_bspMap[m_mapWidth * f_walker.first + f_walker.second] == Tiles::Floor){
+                    m_bspMap[m_mapWidth * f_walker.first + f_walker.second] = Tiles::Empty;
+                }
+            }
+        }
     }
     
     void BSP::cleanUpMap(int p_mapWidth, int p_mapHeight) {
