@@ -32,7 +32,8 @@ namespace Game {
         bool f_splitSuccessfully = true;
         while(f_splitSuccessfully) {
             f_splitSuccessfully = false;
-            for(auto &l_leaf : f_leaves) {
+            for(auto& l_leaf : f_leaves) {
+                // Do stuff here.
             }
         }
 
