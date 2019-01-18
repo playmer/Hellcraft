@@ -26,14 +26,14 @@ namespace Game {
         // Create a vector of leafs.
         std::vector<Leaf> f_leaves;
         auto f_rootLeaf = Leaf(0, 0, p_mapWidth, p_mapHeight);
-        f_leaves.emplace_back(f_rootLeaf);
+        f_leaves.emplace_back(std::move(f_rootLeaf));
 
         // Keep looping until nothing can be split anymore.
         bool f_splitSuccessfully = true;
         while(f_splitSuccessfully) {
             f_splitSuccessfully = false;
             for(auto& l_leaf : f_leaves) {
-                // Do stuff here.
+                // Do stuff here.   
             }
         }
 
