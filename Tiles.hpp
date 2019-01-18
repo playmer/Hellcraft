@@ -33,6 +33,7 @@ namespace Game {
         Wall_Column_Bot,
         Wall_Goo,
         Wall_Goo_Base,
+        Floor,
         Floor_A,
         Floor_B,
         Floor_C,

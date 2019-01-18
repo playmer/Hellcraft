@@ -23,12 +23,12 @@ namespace Game {
         void init(int p_width, int p_length);
         void generate();
 
-        std::vector<std::vector<int>>& getTilemap();
+        std::vector<int>& getTilemap();
 
     private:
         // Generates the actual tilemap with all the needed values.
         void generateTilemap();
 
-        std::vector<std::vector<int>> m_map;
+        std::vector<int> m_map;
     };
 }
