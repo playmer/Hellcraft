@@ -66,7 +66,7 @@ namespace Game {
     void BSP::createHall(Rect& p_roomA, Rect& p_roomB) {
         auto f_walker = p_roomB.getCenter();
         auto f_goal = p_roomA.getCenter();
-        while ((f_goal.first <= f_walker.first && f_walker.first <= room1.first) && (room1.second < f_walker.second && f_walker.second < room1.second)) {
+        while ((f_goal.first <= f_walker.first && f_walker.first <= f_goal.first) && (f_goal.second < f_walker.second && f_walker.second < f_goal.second)) {
             // Directions.
             double f_n = 1.0, f_s = 1.0, f_e = 1.0, f_w = 1.0;
             double f_weightFactor = 1.0;
@@ -117,7 +117,20 @@ namespace Game {
     }
     
     void BSP::cleanUpMap(int p_mapWidth, int p_mapHeight) {
-
+        if(m_smoothEdges) {
+            for(int l_i = 0; l_i < 3; l_i++) {
+                for(int l_x = 1; l_x < m_mapWidth - 1; l_x++) {
+                    for(int l_y = 1; l_y < m_mapHeight - 1; l_y++) {
+                        if(m_bspMap[m_mapWidth * l_x + l_y] == Tiles::Floor && getAdjacentWallCount(l_x, l_y) <= m_smoothingFactor){
+                            m_bspMap[m_mapWidth * l_x + l_y] = Tiles::Empty;
+                        }
+                        if(m_bspMap[m_mapWidth * l_x + l_y] == Tiles::Empty && getAdjacentWallCount(l_x, l_y) >= m_fillingFactor){
+                            m_bspMap[m_mapWidth * l_x + l_y] = Tiles::Floor;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     int BSP::getAdjacentWallCount(int p_x, int p_y) {
