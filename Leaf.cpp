@@ -66,7 +66,7 @@ namespace Game {
                 m_childB->createRooms(p_bsp);
             } 
             if(m_childA && m_childB) {
-                p_bsp.createHall(m_childA.get()->getRoom(), m_childB.get()->getRoom());
+                p_bsp.createHall(*m_childA.get()->getRoom(), *m_childB.get()->getRoom());
             }
         } else { // Create rooms in end branches.
 

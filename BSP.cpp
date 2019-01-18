@@ -27,6 +27,6 @@ namespace Game {
     }
 
     int BSP::getAdjacentWallCount(int p_x, int p_y) {
-        
+        return 42;
     }
 }
