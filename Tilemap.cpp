@@ -26,7 +26,11 @@ namespace Game {
     void Tilemap::printMap(int p_width, int p_length) {
         for(int x = 0; x < p_width; x++) {
             for(int y = 0; y < p_length; y++) {
-                std::cout << m_map[x * p_width + y] + " ";
+                if(m_map[y * p_width + x] != Tiles::Empty) {
+                    std::cout << "#";
+                } else {
+                    std::cout << ".";
+                }
             }
             std::cout << std::endl;
         }
