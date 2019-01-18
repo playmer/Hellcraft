@@ -27,6 +27,8 @@ namespace Game {
         void createHall(Rect& p_roomA, Rect& p_roomB);
         void cleanUpMap(int p_mapWidth, int p_mapHeight);
         int getAdjacentWallCount(int p_x, int p_y);
+        int getMinRoomSize();
+        int getMaxRoomSize();
 
     private:
         int m_mapWidth, m_mapHeight;

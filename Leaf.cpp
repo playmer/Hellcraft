@@ -64,7 +64,12 @@ namespace Game {
                 p_bsp.createHall(*m_childA.get()->getRoom(), *m_childB.get()->getRoom());
             }
         } else { // Create rooms in end branches.
-
+            int f_w = std::uniform_int_distribution<int>(p_bsp.getMinRoomSize(), std::min(p_bsp.getMaxRoomSize(), m_width - 1))(g_rng);
+            int f_h = std::uniform_int_distribution<int>(p_bsp.getMinRoomSize(), std::min(p_bsp.getMaxRoomSize(), m_height - 1))(g_rng);
+            int f_x = std::uniform_int_distribution<int>(m_x, m_x + m_width - 1 - f_w)(g_rng);
+            int f_y = std::uniform_int_distribution<int>(m_y, m_y + m_height - 1 - f_h)(g_rng);
+            m_room = std::make_unique<Rect>(f_x, f_y, f_w, f_h);
+            p_bsp.createRoom(*m_room);
         }
     }
 

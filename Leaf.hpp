@@ -5,6 +5,7 @@ Helper class for BSP generation of dungeon tilemap.
 */
 
 // Standard Headers.
+#include <algorithm>
 #include <memory>
 #include <random>
 #include <optional>

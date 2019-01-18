@@ -19,7 +19,7 @@ namespace Game {
         m_bspMap.reserve(p_mapWidth * p_mapHeight);
         for(int l_x = 0; l_x < m_mapWidth; ++l_x) {
             for(int l_y = 0; l_y < m_mapHeight; ++l_y) {
-                m_bspMap[m_mapWidth * l_x + l_y] = Tiles::Empty;
+                m_bspMap[m_mapWidth * l_y + l_x] = Tiles::Empty;
             }
         }
 
@@ -58,7 +58,7 @@ namespace Game {
     void BSP::createRoom(Rect& p_room) {
         for(int l_x = (std::get<0>(p_room.getCorners()) + 1); l_x < std::get<2>(p_room.getCorners()); ++l_x) {
             for(int l_y = (std::get<1>(p_room.getCorners()) + 1); l_y < std::get<3>(p_room.getCorners()); ++l_y) {
-                m_bspMap[m_mapWidth * l_x + l_y] = Tiles::Floor;
+                m_bspMap[m_mapWidth * l_y + l_x] = Tiles::Floor;
             }
         }
     }
@@ -109,8 +109,8 @@ namespace Game {
                (0 < (f_walker.second + f_dy) && (f_walker.second + f_dy) < m_mapHeight - 1)) {
                 f_walker.first += f_dx;
                 f_walker.second += f_dy;
-                if(m_bspMap[m_mapWidth * f_walker.first + f_walker.second] == Tiles::Floor){
-                    m_bspMap[m_mapWidth * f_walker.first + f_walker.second] = Tiles::Empty;
+                if(m_bspMap[m_mapWidth * f_walker.second + f_walker.first] == Tiles::Floor){
+                    m_bspMap[m_mapWidth * f_walker.second + f_walker.first] = Tiles::Empty;
                 }
             }
         }
@@ -121,11 +121,11 @@ namespace Game {
             for(int l_i = 0; l_i < 3; l_i++) {
                 for(int l_x = 1; l_x < m_mapWidth - 1; l_x++) {
                     for(int l_y = 1; l_y < m_mapHeight - 1; l_y++) {
-                        if(m_bspMap[m_mapWidth * l_x + l_y] == Tiles::Floor && getAdjacentWallCount(l_x, l_y) <= m_smoothingFactor){
-                            m_bspMap[m_mapWidth * l_x + l_y] = Tiles::Empty;
+                        if(m_bspMap[m_mapWidth * l_y + l_x] == Tiles::Floor && getAdjacentWallCount(l_x, l_y) <= m_smoothingFactor){
+                            m_bspMap[m_mapWidth * l_y + l_x] = Tiles::Empty;
                         }
-                        if(m_bspMap[m_mapWidth * l_x + l_y] == Tiles::Empty && getAdjacentWallCount(l_x, l_y) >= m_fillingFactor){
-                            m_bspMap[m_mapWidth * l_x + l_y] = Tiles::Floor;
+                        if(m_bspMap[m_mapWidth * l_y + l_x] == Tiles::Empty && getAdjacentWallCount(l_x, l_y) >= m_fillingFactor){
+                            m_bspMap[m_mapWidth * l_y + l_x] = Tiles::Floor;
                         }
                     }
                 }
@@ -135,15 +135,23 @@ namespace Game {
 
     int BSP::getAdjacentWallCount(int p_x, int p_y) {
         int f_wallCounter = 0;
-        if(m_bspMap[m_mapWidth * p_x + (p_y - 1)] == Tiles::Floor) {
+        if(m_bspMap[m_mapWidth * (p_y - 1) +  p_x] == Tiles::Floor) {
             f_wallCounter++;
-        } else if(m_bspMap[m_mapWidth * p_x + (p_y + 1)] == Tiles::Floor) {
+        } else if(m_bspMap[m_mapWidth * (p_y + 1) + p_x ] == Tiles::Floor) {
             f_wallCounter++;
-        } else if(m_bspMap[m_mapWidth * (p_x - 1) + p_y] == Tiles::Floor) {
+        } else if(m_bspMap[m_mapWidth * p_y + (p_x - 1)] == Tiles::Floor) {
             f_wallCounter++;
-        } else if(m_bspMap[m_mapWidth * (p_x + 1) + p_y] == Tiles::Floor) {
+        } else if(m_bspMap[m_mapWidth * p_y + (p_x + 1)] == Tiles::Floor) {
             f_wallCounter++;
         }
         return f_wallCounter;
+    }
+
+    int BSP::getMinRoomSize() {
+        return m_minRoomSize;
+    }
+
+    int BSP::getMaxRoomSize() {
+        return m_maxRoomSize;
     }
 }
