@@ -57,11 +57,32 @@ namespace Game {
     }
 
     std::optional<std::reference_wrapper<Rect>> Leaf::getRoom() {
+        // Temp rooms.
+        std::optional<std::reference_wrapper<Rect>> f_roomA, f_roomB;
+        std::uniform_int_distribution<int> f_roomChoice(0, 1);
+        int f_rand = f_roomChoice(m_rng);
         // If we have a room for this leaf node, return it.
         if(m_room) {
             return *m_room;
         } else {
-            return std::nullopt;
+            if(m_childA) {
+                f_roomA = m_childA.get()->getRoom();
+            }
+            if(m_childB) {
+                f_roomB = m_childB.get()->getRoom();
+            }
+            // Neither room.
+            if(!m_childA && !m_childB) {
+                return std::nullopt;
+            } else if(!f_roomB) {
+                return f_roomA;
+            } else if(!f_roomA) {
+                return f_roomB;
+            } else if(f_rand) {
+                return f_roomA;
+            } else {
+                return f_roomB;
+            }
         }
     }
 }
