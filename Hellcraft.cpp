@@ -6,11 +6,16 @@
 // Engine Headers.
 #include "Application.hpp"
 #include "Log.hpp"
+// Game Headers.
+#include "RNG.hpp"
 
 // Game Entry point.
 int main(int argc, char* argv[]) {
     // Create logging system and launch it.
     Logger::startLog("log.txt");
+    // Seed RNG engine.
+    std::random_device f_rd;
+    Game::g_rng.seed(f_rd());
     // Create our game and head into the loop.
     Logger::log(INFO, "Creating instance of application class to create game.");
     Game::Application myGame(1280, 720, "Hellcraft", "Assets/Icon.png");

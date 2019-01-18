@@ -14,14 +14,11 @@ namespace Game {
         if(m_childA || m_childB) {
             return false;
         }
-
         // Determine direction of split, threshold is 25%. Go random elsewise.
-        std::random_device f_rd;
-        std::mt19937 f_rng;
-        auto f_splitHorizontally = m_randomBool(f_rng);
-        if((m_width / m_height) >= 1.25) {
+        auto f_splitHorizontally = m_randomBool(g_rng);
+        if(((double)m_width / (double)m_height) >= 1.25) {
             return false;
-        } else if ((m_height / m_width) >= 1.25) {
+        } else if (((double)m_height / (double)m_width) >= 1.25) {
             return true;
         }
 
@@ -40,7 +37,7 @@ namespace Game {
 
         // Figure out where we want to split leaf.
         std::uniform_int_distribution<int> f_splitter(m_minLeafSize, f_maxLeafSize);
-        int f_split = f_splitter(f_rng);
+        int f_split = f_splitter(g_rng);
 
         if(f_splitHorizontally) {
             m_childA = std::make_unique<Leaf>(m_x, m_y, m_width, f_split);
@@ -72,12 +69,10 @@ namespace Game {
     }
 
     std::optional<std::reference_wrapper<Rect>> Leaf::getRoom() {
-        std::random_device f_rd;
-        std::mt19937 f_rng;
         // Temp rooms.
         std::optional<std::reference_wrapper<Rect>> f_roomA, f_roomB;
         std::uniform_int_distribution<int> f_roomChoice(0, 1);
-        int f_rand = f_roomChoice(f_rng);
+        int f_rand = f_roomChoice(g_rng);
         // If we have a room for this leaf node, return it.
         if(m_room) {
             return *m_room;
@@ -101,5 +96,21 @@ namespace Game {
                 return f_roomB;
             }
         }
+    }
+
+    std::optional<std::reference_wrapper<Leaf>> Leaf::returnChildA() {
+        return *m_childA;
+    }
+
+    std::optional<std::reference_wrapper<Leaf>> Leaf::returnChildB() {
+        return *m_childB;
+    }
+
+    int Leaf::getWidth() {
+        return m_width;
+    }
+
+    int Leaf::getHeight() {
+        return m_height;
     }
 }

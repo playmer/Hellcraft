@@ -11,6 +11,7 @@ Helper class for BSP generation of dungeon tilemap.
 // Game Headers
 #include "BSP.hpp"
 #include "Rect.hpp"
+#include "RNG.hpp"
 
 namespace Game {
     class BSP;
@@ -21,7 +22,13 @@ namespace Game {
         
         bool splitLeaf();
         void createRooms(BSP& p_bsp);
+        
         std::optional<std::reference_wrapper<Rect>> getRoom();
+        std::optional<std::reference_wrapper<Leaf>> returnChildA();
+        std::optional<std::reference_wrapper<Leaf>> returnChildB();
+
+        int getWidth();
+        int getHeight();
 
     private:
         int m_x, m_y;

@@ -12,6 +12,7 @@ that our tilemap class needs.
 // Game Headers.
 #include "Leaf.hpp"
 #include "Rect.hpp"
+#include "RNG.hpp"
 #include "Tiles.hpp"
 
 namespace Game {

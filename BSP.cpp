@@ -33,9 +33,23 @@ namespace Game {
         while(f_splitSuccessfully) {
             f_splitSuccessfully = false;
             for(auto& l_leaf : f_leaves) {
-                // Do stuff here.   
+                if(!l_leaf.returnChildA() && !l_leaf.returnChildB()) {
+                    std::uniform_int_distribution<int> f_dist(0, 10);
+                    if(l_leaf.getWidth() > m_maxLeafSize || l_leaf.getHeight() > m_maxLeafSize || f_dist(g_rng) > 8) {
+                        if(l_leaf.splitLeaf()){
+                            f_leaves.emplace_back(std::move(l_leaf.returnChildA()));
+                            f_leaves.emplace_back(std::move(l_leaf.returnChildB()));
+                            f_splitSuccessfully = true;
+                        }
+                    } 
+                }
             }
         }
+
+        // Create rooms.
+        f_rootLeaf.createRooms(*this);
+        // Cleanup map.
+        cleanUpMap(m_mapWidth, m_mapHeight);
 
         // Done. Assign our BSP map to the actual tileset map that was passed in and be done with it.   
         p_map = m_bspMap;
