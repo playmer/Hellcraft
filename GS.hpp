@@ -46,9 +46,10 @@ namespace Game {
     private:
         Engine::Animation m_animation;
         Engine::Manager m_resourceManager;
+        Game::Level m_level;
     };
 
-    GS::GS() {
+    GS::GS() : m_level {} {
         Logger::log(INFO, "Game state constructor called!");
     }
 
