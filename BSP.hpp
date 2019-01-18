@@ -18,7 +18,7 @@ namespace Game {
         BSP();
         ~BSP();
 
-        void generateLevel(std::vector<int>& p_map, int p_mapWidth, int p_mapHeight);
+        void generateLevel(std::vector<std::vector<int>>& p_map, int p_mapWidth, int p_mapHeight);
         void createRoom(Rect& p_room);
         void createHall(Rect& p_roomA, Rect& p_roomB);
         void cleanUpMap(int p_mapWidth, int p_mapHeight);

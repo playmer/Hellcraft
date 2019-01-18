@@ -18,7 +18,7 @@ namespace Game {
         
     }
 
-    std::vector<int>& Tilemap::getTilemap() {
+    std::vector<std::vector<int>>& Tilemap::getTilemap() {
         return m_map;
     }
 }

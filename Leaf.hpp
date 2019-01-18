@@ -13,6 +13,8 @@ Helper class for BSP generation of dungeon tilemap.
 #include "Rect.hpp"
 
 namespace Game {
+    class BSP;
+
     class Leaf {
     public:
         Leaf(int p_x, int p_y, int p_width, int p_height);
