@@ -18,26 +18,28 @@ that our tilemap class needs.
 
 namespace Game {
     class BSP {
-    public:
-        BSP();
-        ~BSP();
+	public:
+		BSP();
+		~BSP();
 
-        void generateLevel(std::vector<int>& p_map, int p_mapWidth, int p_mapHeight);
-        void createRoom(Rect& p_room);
-        void createHall(Rect& p_roomA, Rect& p_roomB);
-        void cleanUpMap(int p_mapWidth, int p_mapHeight);
+		void generateLevel(std::vector<int>& p_map, int p_mapWidth, int p_mapHeight);
+
+		void createRoom(Rect& p_room);
+		void createHall(Rect& p_roomA, Rect& p_roomB);
+		void cleanUpMap(int p_mapWidth, int p_mapHeight);
         int getAdjacentWallCount(int p_x, int p_y);
-        int getMinRoomSize();
-        int getMaxRoomSize();
 
-    private:
-        int m_mapWidth, m_mapHeight;
-        int m_maxLeafSize;
-        int m_minRoomSize, m_maxRoomSize;
+		int getMinRoomSize();
+		int getMaxRoomSize();
+
+	private:
+		int m_mapWidth, m_mapHeight;
+		int m_maxLeafSize;
+		int m_minRoomSize, m_maxRoomSize;
+		int m_smoothingFactor;
+		int m_fillingFactor;
         bool m_smoothEdges;
-        int m_smoothingFactor;
-        int m_fillingFactor;
 
-        std::vector<int> m_bspMap;
-    };
+		std::vector<int> m_bspMap;
+	};
 }

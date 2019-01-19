@@ -3,7 +3,7 @@
 
 namespace Game {
     BSP::BSP() : m_maxLeafSize { 24 }, m_minRoomSize { 6 }, m_maxRoomSize { 15 },
-    m_smoothEdges { true }, m_smoothingFactor { 1 }, m_fillingFactor { 3 } 
+    m_smoothingFactor { 1 }, m_fillingFactor { 3 }, m_smoothEdges { true }
     {
 
     }
@@ -13,47 +13,43 @@ namespace Game {
     }
 
     void BSP::generateLevel(std::vector<int>& p_map, int p_mapWidth, int p_mapHeight) {
-        // Create empty 1D "2D vector that we'll end up assigning the p_map to."
-        m_mapWidth = p_mapWidth;
-        m_mapHeight = p_mapHeight;
-        m_bspMap.reserve(p_mapWidth * p_mapHeight);
-        for(int l_x = 0; l_x < m_mapWidth; ++l_x) {
-            for(int l_y = 0; l_y < m_mapHeight; ++l_y) {
-                m_bspMap[m_mapWidth * l_y + l_x] = Tiles::Empty;
-            }
-        }
+		// Create empty 1D "2D" vector that we'll end up assigning the p_map to.
+		m_mapWidth = p_mapWidth;
+		m_mapHeight = p_mapHeight;
+		m_bspMap.resize(p_mapWidth * p_mapHeight, Tiles::Empty);
 
-        // Create a vector of leafs.
-        std::vector<Leaf> f_leaves;
-        auto f_rootLeaf = Leaf(0, 0, p_mapWidth, p_mapHeight);
-        f_leaves.emplace_back(std::move(f_rootLeaf));
+		std::unique_ptr<Leaf> f_rootLeaf = std::make_unique<Leaf>(0, 0, p_mapWidth, p_mapHeight);
 
-        // Keep looping until nothing can be split anymore.
-        bool f_splitSuccessfully = true;
-        while(f_splitSuccessfully) {
-            f_splitSuccessfully = false;
-            for(auto& l_leaf : f_leaves) {
-                if(!l_leaf.returnChildA() && !l_leaf.returnChildB()) {
-                    std::uniform_int_distribution<int> f_dist(0, 10);
-                    if(l_leaf.getWidth() > m_maxLeafSize || l_leaf.getHeight() > m_maxLeafSize || f_dist(g_rng) > 8) {
-                        if(l_leaf.splitLeaf()){
-                            f_leaves.emplace_back(std::move(l_leaf.returnChildA().value().get()));
-                            f_leaves.emplace_back(std::move(l_leaf.returnChildB().value().get()));
-                            f_splitSuccessfully = true;
-                        }
-                    } 
-                }
-            }
-        }
+		// Create a vector of leaves.
+		std::vector<Leaf*> f_leaves;
+		f_leaves.emplace_back(f_rootLeaf.get());
 
-        // Create rooms.
-        f_rootLeaf.createRooms(*this);
-        // Cleanup map.
-        cleanUpMap(m_mapWidth, m_mapHeight);
+        // Used in splitting.
+		std::uniform_int_distribution<int> f_dist(0, 10);
 
-        // Done. Assign our BSP map to the actual tileset map that was passed in and be done with it.   
-        p_map = m_bspMap;
-    }
+		// Keep looping until nothing can be split anymore.
+		while (f_leaves.size() > 0) {
+			auto l_leaf = f_leaves.back();
+			f_leaves.pop_back();   
+			if (l_leaf->getWidth() > m_maxLeafSize || l_leaf->getHeight() > m_maxLeafSize || f_dist(g_rng) > 8) {
+				if (l_leaf->splitLeaf()) {
+					auto f_splitA = l_leaf->returnChildA();
+					f_leaves.emplace_back(f_splitA);
+					auto f_splitB = l_leaf->returnChildB();
+					f_leaves.emplace_back(f_splitB);
+				}
+			}
+		}
+
+		// Create rooms.
+		f_rootLeaf->createRooms(*this);
+
+		// Cleanup map.
+		cleanUpMap(m_mapWidth, m_mapHeight);
+
+		// Done. Assign our BSP map to the actual tileset map that was passed in and be done with it.   
+		p_map = m_bspMap;
+	}
 
     void BSP::createRoom(Rect& p_room) {
         for(int l_x = (std::get<0>(p_room.getCorners()) + 1); l_x < std::get<2>(p_room.getCorners()); ++l_x) {
@@ -137,11 +133,14 @@ namespace Game {
         int f_wallCounter = 0;
         if(m_bspMap[m_mapWidth * (p_y - 1) +  p_x] == Tiles::Floor) {
             f_wallCounter++;
-        } else if(m_bspMap[m_mapWidth * (p_y + 1) + p_x ] == Tiles::Floor) {
+        } 
+        if(m_bspMap[m_mapWidth * (p_y + 1) + p_x ] == Tiles::Floor) {
             f_wallCounter++;
-        } else if(m_bspMap[m_mapWidth * p_y + (p_x - 1)] == Tiles::Floor) {
+        } 
+        if(m_bspMap[m_mapWidth * p_y + (p_x - 1)] == Tiles::Floor) {
             f_wallCounter++;
-        } else if(m_bspMap[m_mapWidth * p_y + (p_x + 1)] == Tiles::Floor) {
+        }
+        if(m_bspMap[m_mapWidth * p_y + (p_x + 1)] == Tiles::Floor) {
             f_wallCounter++;
         }
         return f_wallCounter;
