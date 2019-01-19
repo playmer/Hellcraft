@@ -33,10 +33,8 @@ namespace Game {
 			f_leaves.pop_back();   
 			if (l_leaf->getWidth() > m_maxLeafSize || l_leaf->getHeight() > m_maxLeafSize || f_dist(g_rng) > 8) {
 				if (l_leaf->splitLeaf()) {
-					auto f_splitA = l_leaf->returnChildA();
-					f_leaves.emplace_back(f_splitA);
-					auto f_splitB = l_leaf->returnChildB();
-					f_leaves.emplace_back(f_splitB);
+					f_leaves.emplace_back(l_leaf->returnChildA());
+					f_leaves.emplace_back(l_leaf->returnChildB());
 				}
 			}
 		}
