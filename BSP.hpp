@@ -24,10 +24,10 @@ namespace Game {
 
 		void generateLevel(std::vector<int>& p_map, int p_mapWidth, int p_mapHeight);
 
-		void createRoom(Rect& p_room);
-		void createHall(Rect& p_roomA, Rect& p_roomB);
-		void cleanUpMap(int p_mapWidth, int p_mapHeight);
-        int getAdjacentWallCount(int p_x, int p_y);
+		void createRoom(std::vector<int>& p_map, Rect& p_room);
+		void createHall(std::vector<int>& p_map, Rect& p_roomA, Rect& p_roomB);
+		void cleanUpMap(std::vector<int>& p_map, int p_mapWidth, int p_mapHeight);
+        int getAdjacentWallCount(std::vector<int>& p_map, int p_x, int p_y);
 
 		int getMinRoomSize();
 		int getMaxRoomSize();
@@ -39,7 +39,5 @@ namespace Game {
 		int m_smoothingFactor;
 		int m_fillingFactor;
         bool m_smoothEdges;
-
-		std::vector<int> m_bspMap;
 	};
 }

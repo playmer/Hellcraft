@@ -22,7 +22,7 @@ namespace Game {
 		Leaf(int p_x, int p_y, int p_width, int p_height);
 
 		bool splitLeaf();
-		void createRooms(BSP& p_bsp);
+		void createRooms(std::vector<int>& p_map, BSP& p_bsp);
 
 		Leaf* returnChildA();
 		Leaf* returnChildB();

@@ -16,7 +16,7 @@ namespace Game {
 		// Create empty 1D "2D" vector that we'll end up assigning the p_map to.
 		m_mapWidth = p_mapWidth;
 		m_mapHeight = p_mapHeight;
-		m_bspMap.resize(p_mapWidth * p_mapHeight, Tiles::Empty);
+		p_map.resize(p_mapWidth * p_mapHeight, Tiles::Empty);
 
 		std::unique_ptr<Leaf> f_rootLeaf = std::make_unique<Leaf>(0, 0, p_mapWidth, p_mapHeight);
 
@@ -40,24 +40,21 @@ namespace Game {
 		}
 
 		// Create rooms.
-		f_rootLeaf->createRooms(*this);
+		f_rootLeaf->createRooms(p_map, *this);
 
-		// Cleanup map.
-		cleanUpMap(m_mapWidth, m_mapHeight);
-
-		// Done. Assign our BSP map to the actual tileset map that was passed in and be done with it.   
-		p_map = m_bspMap;
+		// Cleanup map and we're done.
+		cleanUpMap(p_map, m_mapWidth, m_mapHeight);
 	}
 
-    void BSP::createRoom(Rect& p_room) {
+    void BSP::createRoom(std::vector<int>& p_map, Rect& p_room) {
         for(int l_x = (std::get<0>(p_room.getCorners()) + 1); l_x < std::get<2>(p_room.getCorners()); ++l_x) {
             for(int l_y = (std::get<1>(p_room.getCorners()) + 1); l_y < std::get<3>(p_room.getCorners()); ++l_y) {
-                m_bspMap[m_mapWidth * l_y + l_x] = Tiles::Floor;
+                p_map[m_mapWidth * l_y + l_x] = Tiles::Floor;
             }
         }
     }
 
-    void BSP::createHall(Rect& p_roomA, Rect& p_roomB) {
+    void BSP::createHall(std::vector<int>& p_map, Rect& p_roomA, Rect& p_roomB) {
         auto f_walker = p_roomB.getCenter();
         auto f_goal = p_roomA.getCenter();
         while ((f_goal.first <= f_walker.first && f_walker.first <= f_goal.first) && (f_goal.second < f_walker.second && f_walker.second < f_goal.second)) {
@@ -103,23 +100,23 @@ namespace Game {
                (0 < (f_walker.second + f_dy) && (f_walker.second + f_dy) < m_mapHeight - 1)) {
                 f_walker.first += f_dx;
                 f_walker.second += f_dy;
-                if(m_bspMap[m_mapWidth * f_walker.second + f_walker.first] == Tiles::Floor){
-                    m_bspMap[m_mapWidth * f_walker.second + f_walker.first] = Tiles::Empty;
+                if(p_map[m_mapWidth * f_walker.second + f_walker.first] == Tiles::Floor){
+                    p_map[m_mapWidth * f_walker.second + f_walker.first] = Tiles::Empty;
                 }
             }
         }
     }
     
-    void BSP::cleanUpMap(int p_mapWidth, int p_mapHeight) {
+    void BSP::cleanUpMap(std::vector<int>& p_map, int p_mapWidth, int p_mapHeight) {
         if(m_smoothEdges) {
             for(int l_i = 0; l_i < 3; l_i++) {
                 for(int l_x = 1; l_x < m_mapWidth - 1; l_x++) {
                     for(int l_y = 1; l_y < m_mapHeight - 1; l_y++) {
-                        if(m_bspMap[p_mapWidth * l_y + l_x] == Tiles::Floor && getAdjacentWallCount(l_x, l_y) <= m_smoothingFactor){
-                            m_bspMap[p_mapWidth * l_y + l_x] = Tiles::Empty;
+                        if(p_map[p_mapWidth * l_y + l_x] == Tiles::Floor && getAdjacentWallCount(p_map, l_x, l_y) <= m_smoothingFactor){
+                            p_map[p_mapWidth * l_y + l_x] = Tiles::Empty;
                         }
-                        if(m_bspMap[p_mapWidth * l_y + l_x] == Tiles::Empty && getAdjacentWallCount(l_x, l_y) >= m_fillingFactor){
-                            m_bspMap[p_mapWidth * l_y + l_x] = Tiles::Floor;
+                        if(p_map[p_mapWidth * l_y + l_x] == Tiles::Empty && getAdjacentWallCount(p_map, l_x, l_y) >= m_fillingFactor){
+                            p_map[p_mapWidth * l_y + l_x] = Tiles::Floor;
                         }
                     }
                 }
@@ -127,18 +124,18 @@ namespace Game {
         }
     }
 
-    int BSP::getAdjacentWallCount(int p_x, int p_y) {
+    int BSP::getAdjacentWallCount(std::vector<int>& p_map, int p_x, int p_y) {
         int f_wallCounter = 0;
-        if(m_bspMap[m_mapWidth * (p_y - 1) +  p_x] == Tiles::Floor) {
+        if(p_map[m_mapWidth * (p_y - 1) +  p_x] == Tiles::Floor) {
             f_wallCounter++;
         } 
-        if(m_bspMap[m_mapWidth * (p_y + 1) + p_x ] == Tiles::Floor) {
+        if(p_map[m_mapWidth * (p_y + 1) + p_x] == Tiles::Floor) {
             f_wallCounter++;
         } 
-        if(m_bspMap[m_mapWidth * p_y + (p_x - 1)] == Tiles::Floor) {
+        if(p_map[m_mapWidth * p_y + (p_x - 1)] == Tiles::Floor) {
             f_wallCounter++;
         }
-        if(m_bspMap[m_mapWidth * p_y + (p_x + 1)] == Tiles::Floor) {
+        if(p_map[m_mapWidth * p_y + (p_x + 1)] == Tiles::Floor) {
             f_wallCounter++;
         }
         return f_wallCounter;
