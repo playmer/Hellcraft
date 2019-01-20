@@ -2,5 +2,5 @@
 #include "RNG.hpp"
 
 namespace Game {
-    std::mt19937 g_rng;
+    std::default_random_engine g_rng;
 }

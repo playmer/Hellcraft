@@ -3,6 +3,8 @@
     A game by Juliette Lavoie.
 */
 
+// Standard Headers.
+
 // Engine Headers.
 #include "Application.hpp"
 #include "Log.hpp"
@@ -14,8 +16,7 @@ int main(int argc, char* argv[]) {
     // Create logging system and launch it.
     Logger::startLog("log.txt");
     // Seed RNG engine.
-    std::random_device f_rd;
-    Game::g_rng.seed(f_rd());
+    Game::g_rng.seed(static_cast<long unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
     // Create our game and head into the loop.
     Logger::log(INFO, "Creating instance of application class to create game.");
     Game::Application myGame(1280, 720, "Hellcraft", "Assets/Icon.png");

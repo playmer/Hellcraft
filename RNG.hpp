@@ -8,5 +8,5 @@ Random number generator engine.
 #include <random>
 
 namespace Game {
-    extern std::mt19937 g_rng;
+    extern std::default_random_engine g_rng;
 }
