@@ -11,6 +11,9 @@ Also includes dungeon generation features. Map is basically a massive grid held 
 #include <SFML/Graphics/Transformable.hpp>
 // Standard Headers.
 #include <vector>
+// Engine Headers.
+#include "Manager.hpp"
+#include "Texture.hpp"
 // Game Headers.
 #include "BSP.hpp"
 #include "Leaf.hpp"
@@ -21,7 +24,7 @@ namespace Game {
     class Tilemap {
     public:
         // When we make tilemap, we need to make it a certain size.
-        Tilemap();
+        Tilemap(Engine::Manager* p_manager);
         ~Tilemap();
 
         void init(int p_width, int p_length);
@@ -34,7 +37,8 @@ namespace Game {
         // Is an override function so we can pass this classes objects into windows.draw().
         virtual void draw(sf::RenderTarget& p_target, sf::RenderStates p_states) const; 
 
-        std::vector<int> m_map;
         BSP m_bsp;
+        std::vector<int> m_map;
+        Engine::Manager* m_manager;
     };
 }

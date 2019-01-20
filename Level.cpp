@@ -2,10 +2,8 @@
 #include "Level.hpp"
 
 namespace Game {
-    Level::Level() {
-        m_levelmap.init(50, 50);
-        m_levelmap.generate(50, 50);
-        m_levelmap.printMap(50, 50);
+    Level::Level(Engine::Manager* p_manager) : m_levelmap { p_manager } {
+
     }
 
     Level::~Level() {
@@ -16,7 +14,14 @@ namespace Game {
         return m_levelmap;
     }
 
-    void update(Engine::Clock& p_clock) {
+    void Level::update(Engine::Clock& p_clock) {
         // Add more here later.
+    }
+
+    void Level::generateLevel(int p_width, int p_length) {
+        // Create a new tilemap/level and display it.
+        m_levelmap.init(p_width, p_length);
+        m_levelmap.generate(p_width, p_length);
+        m_levelmap.printMap(p_width, p_length);
     }
 }

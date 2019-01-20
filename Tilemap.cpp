@@ -2,7 +2,7 @@
 #include "Tilemap.hpp"
 
 namespace Game {
-    Tilemap::Tilemap() {
+    Tilemap::Tilemap(Engine::Manager* p_manager) : m_manager { p_manager } {
         
     }
 
@@ -36,7 +36,7 @@ namespace Game {
     }
 
     // Is an override function so we can pass this classes objects into windows.draw().
-    void draw(sf::RenderTarget& p_target, sf::RenderStates p_states) const {
-        
+    void Tilemap::draw(sf::RenderTarget& p_target, sf::RenderStates p_states) const {
+
     }
 }

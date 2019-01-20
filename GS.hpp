@@ -49,7 +49,7 @@ namespace Game {
         Game::Level m_level;
     };
 
-    GS::GS() : m_level {} {
+    GS::GS() : m_level { &m_resourceManager } {
         Logger::log(INFO, "Game state constructor called!");
     }
 
@@ -63,6 +63,7 @@ namespace Game {
         m_resourceManager.addResource<Engine::Texture>("Tileset", "Assets/Tileset.png");
         m_animation.init(*m_resourceManager.getResource<Engine::Texture>("Tileset"), 7.5);
         m_animation.cutFrames(16, 270, 128, 34, 32, 34);
+        m_level.generateLevel(50, 50);
     }
 
     void GS::cleanup() {
