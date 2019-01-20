@@ -5,6 +5,10 @@ Used to create and hold the tilemap for this game. Basically an area of integers
 Also includes dungeon generation features. Map is basically a massive grid held in a 1D vector.
 */
 
+// SFML Headers.
+#include <SFML/Graphics/Drawable.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
+#include <SFML/Graphics/Transformable.hpp>
 // Standard Headers.
 #include <vector>
 // Game Headers.
@@ -27,6 +31,9 @@ namespace Game {
         std::vector<int>& getTilemap();
 
     private:
+        // Is an override function so we can pass this classes objects into windows.draw().
+        virtual void draw(sf::RenderTarget& p_target, sf::RenderStates p_states) const; 
+
         std::vector<int> m_map;
         BSP m_bsp;
     };

@@ -34,4 +34,9 @@ namespace Game {
             std::cout << std::endl;
         }
     }
+
+    // Is an override function so we can pass this classes objects into windows.draw().
+    void draw(sf::RenderTarget& p_target, sf::RenderStates p_states) const {
+        
+    }
 }
