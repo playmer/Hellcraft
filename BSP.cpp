@@ -103,8 +103,8 @@ namespace Game {
                (0 < (f_walker.second + f_dy) && (f_walker.second + f_dy) < m_mapHeight - 1)) {
                 f_walker.first += f_dx;
                 f_walker.second += f_dy;
-                if(p_map[m_mapWidth * f_walker.second + f_walker.first] == Tiles::Floor){
-                    p_map[m_mapWidth * f_walker.second + f_walker.first] = Tiles::Empty;
+                if(p_map[m_mapWidth * f_walker.second + f_walker.first] == Tiles::Empty){
+                    p_map[m_mapWidth * f_walker.second + f_walker.first] = Tiles::Floor;
                 }
             }
         }
