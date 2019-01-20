@@ -6,6 +6,7 @@ that our tilemap class needs.
 */
 
 // Standard Headers.
+#include <iostream>
 #include <memory>
 #include <tuple>
 #include <vector>

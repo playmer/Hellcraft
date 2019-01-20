@@ -22,6 +22,10 @@ namespace Game {
         }
     }
 
+	std::pair<int, int> Rect::getEdge() {
+        return std::make_pair(m_x2, m_y2);
+    }
+
     std::pair<int, int> Rect::getCenter() {
         int f_centerX = (m_x1 + m_x2) / 2;
         int f_centerY = (m_y1 + m_y2) / 2;

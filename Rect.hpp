@@ -15,6 +15,7 @@ class Rect {
 		~Rect();
 
 		bool intersect(Rect& rect);
+		std::pair<int, int> getEdge();
 		std::pair<int, int> getCenter();
 		std::tuple<int, int, int, int> getCorners();
 
