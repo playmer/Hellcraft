@@ -2,8 +2,8 @@
 # Declaration of variables
 CC = g++
 CC_FLAGS = -std=c++17 -Wall -g
-LINKER_FLAGS =  -lsfml-graphics -lsfml-window -lsfml-system
-INCLUDE_FILES = C:\Users\Rietty\Documents\Libraries\SFML-Install\include
+LINKER_FLAGS = -lsfml-graphics -lsfml-window -lsfml-system -mwindows
+INCLUDE_FILES = -I C:\Users\Rietty\Documents\Libraries\SFML-Install\include
 LIB_FILES = C:\Users\Rietty\Documents\Libraries\SFML-Install\lib
 RESOURCE_FILES = Icon.res
  
@@ -20,7 +20,7 @@ $(EXEC): $(OBJECTS)
  
 # To obtain object files
 %.o: %.cpp
-	$(CC) -c $(CC_FLAGS) $< -o $@ -I $(INCLUDE_FILES)
+	$(CC) -c $(CC_FLAGS) $< -o $@ $(INCLUDE_FILES)
  
 # To remove generated files
 clean:

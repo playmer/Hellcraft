@@ -98,6 +98,6 @@ namespace Game {
 
     template <typename FSM>     
     void GS::draw(FSM& p_fsm, Engine::Window& p_window) {
-        p_window.getWindow().draw(m_animation);
+        p_window.getWindow().draw(m_level.getMap());
     }
 }

@@ -22,6 +22,5 @@ namespace Game {
         // Create a new tilemap/level and display it.
         m_levelmap.init(p_width, p_length);
         m_levelmap.generate(p_width, p_length);
-        m_levelmap.printMap(p_width, p_length);
     }
 }

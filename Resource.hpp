@@ -27,7 +27,7 @@ namespace Engine {
         }
 
         T* operator->() {
-            return static_cast<T&>(*m_data);
+            return &static_cast<T&>(*m_data);
         }
 
         std::shared_ptr<Asset> m_data;
