@@ -1,10 +1,10 @@
 /*
-    NEET: Never Ever Enter There
-    A game by Juliette Lavoie.
+    Hellcraft.
+    An excerise in implementing a game and engine in an extensive dungeoncrawler.
 */
 
 // Standard Headers.
-
+#include <chrono>
 // Engine Headers.
 #include "Application.hpp"
 #include "Log.hpp"
