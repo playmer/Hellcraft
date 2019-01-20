@@ -4,6 +4,7 @@
 namespace Game {
     Level::Level() {
         m_levelmap.init(50, 50);
+        m_levelmap.generate(50, 50);
         m_levelmap.printMap(50, 50);
     }
 

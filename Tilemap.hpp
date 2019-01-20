@@ -6,7 +6,6 @@ Also includes dungeon generation features. Map is basically a massive grid held 
 */
 
 // Standard Headers.
-#include <iostream>
 #include <vector>
 // Game Headers.
 #include "BSP.hpp"
@@ -23,14 +22,11 @@ namespace Game {
 
         void init(int p_width, int p_length);
         void printMap(int p_width, int p_length);
-        void generate();
+        void generate(int p_width, int p_length);
 
         std::vector<int>& getTilemap();
 
     private:
-        // Generates the actual tilemap with all the needed values.
-        void generateTilemap();
-
         std::vector<int> m_map;
         BSP m_bsp;
     };

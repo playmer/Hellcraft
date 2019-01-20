@@ -12,11 +12,10 @@ namespace Game {
 
     void Tilemap::init(int p_width, int p_length) {
         m_map.reserve(p_width * p_length);
-        m_bsp.generateLevel(m_map, p_width, p_length);
     }
 
-    void Tilemap::generate() {
-        
+    void Tilemap::generate(int p_width, int p_length) {
+        m_bsp.generateLevel(m_map, p_width, p_length);
     }
 
     std::vector<int>& Tilemap::getTilemap() {
