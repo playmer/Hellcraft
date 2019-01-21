@@ -6,6 +6,7 @@ Part of the game engine.
 */
 
 // Standard Headers.
+#include <list>
 #include <stack>
 #include <utility>
 #include <variant>
@@ -24,7 +25,8 @@ namespace Engine {
         void init();
         void cleanup();
 
-        void changeState(State p_state);
+        template <typename U, typename ...Args>
+        void changeState(Args&& ...p_args);
         void pushState(State p_state);
         void popState();
 
@@ -47,7 +49,7 @@ namespace Engine {
         }
 
     private:
-        std::stack<std::variant<T...>> m_states; 
+        std::stack<State, std::list<State>> m_states;
         bool m_running;
     };
 
@@ -90,21 +92,27 @@ namespace Engine {
 
     // Transition to a new state without preserving old one.
     template <typename ...T>
-    void FSM<T...>::changeState(State p_state) {
-        // Cleanup current state.
-        if(!m_states.empty()) {
-            std::visit(
-                [](auto& state){ state.cleanup(); },
-                m_states.top()
-            );
-            m_states.pop();
-        }
-        // Store and start up new state.
-        m_states.emplace(std::move(p_state));
+    template <typename U, typename ...Args>
+    void FSM<T...>::changeState(Args&& ...p_args)
+    {
+      // Cleanup current state.
+      if (!m_states.empty()) {
         std::visit(
-            [](auto& state){ state.init(); },
-            m_states.top()
+          [](auto& state) { state.cleanup(); },
+          m_states.top()
         );
+        m_states.pop();
+      }
+
+      // Store and start up new state.
+      m_states.emplace(State{});
+      auto& newState = m_states.top();
+      newState.emplace<U>(std::forward(p_args)...);
+
+      std::visit(
+        [](auto& state) { state.init(); },
+        m_states.top()
+      );
     }
 
     // Pause current state and switch to a new one.

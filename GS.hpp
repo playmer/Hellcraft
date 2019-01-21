@@ -87,7 +87,7 @@ namespace Game {
             m_animation.play();
         }
         if(p_event.getEvent().type == sf::Event::KeyPressed && p_event.getEvent().key.code == sf::Keyboard::Escape) {
-            p_fsm.changeState(Game::Menu{});
+            p_fsm.changeState<Game::Menu>();
         }
     }
 
