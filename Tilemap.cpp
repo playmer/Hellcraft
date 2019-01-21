@@ -16,7 +16,7 @@ namespace Game {
 
     void Tilemap::generate(int p_width, int p_length) {
         m_bsp.generateLevel(m_map, p_width, p_length);
-        createVertexArray(sf::Vector2u(32, 32), p_width, p_length);
+        createVertexArray(sf::Vector2u(16, 16), p_width, p_length);
     }
 
     std::vector<int>& Tilemap::getTilemap() {
