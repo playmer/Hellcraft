@@ -3,7 +3,7 @@
 
 namespace Game {
     Level::Level(Engine::Manager* p_manager) : m_levelmap { p_manager } {
-
+        
     }
 
     Level::~Level() {
